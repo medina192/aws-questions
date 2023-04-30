@@ -1,0 +1,33 @@
+Una startup sanitaria estadounidense está creando una herramienta interactiva de diagnóstico para evaluaciones relacionadas con la COVID-19. Los usuarios tendrían que capturar sus datos sanitarios personales a través de esta herramienta. Como se trata de información sanitaria sensible, la copia de seguridad de los datos de los usuarios debe mantenerse cifrada en S3. La startup no quiere proporcionar sus propias claves de cifrado, pero quiere mantener un registro de auditoría de cuándo se ha utilizado una clave de cifrado y por quién.
+
+¿Cuál de las siguientes es la MEJOR solución para este caso de uso?
+
+
+
+Explicación
+Opción correcta:
+
+Utiliza SSE-KMS para cifrar los datos de usuario en S3.
+
+AWS Key Management Service (AWS KMS) es un servicio que combina hardware y software seguros y de alta disponibilidad para proporcionar un sistema de administración de claves escalado para la nube. Cuando utilizas el cifrado del lado del servidor con AWS KMS (SSE-KMS), puedes especificar una CMK gestionada por el cliente que ya hayas creado. SSE-KMS te proporciona un registro de auditoría que muestra cuándo se ha utilizado tu CMK y por quién. Por tanto, SSE-KMS es la solución correcta para este caso de uso.
+
+Cifrado del lado del servidor en S3:
+IMG 40
+
+vía - https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html
+
+Opciones incorrectas:
+
+Utilizar SSE-S3 para cifrar los datos de usuario en S3 - Cuando utilizas el cifrado del lado del servidor con claves gestionadas por Amazon S3 (SSE-S3), cada objeto se cifra con una clave única. Sin embargo, esta opción no ofrece la posibilidad de realizar un seguimiento de auditoría del uso de las claves de cifrado.
+
+Utiliza SSE-C para cifrar los datos del usuario en S3 - Con el cifrado del lado del servidor con claves proporcionadas por el cliente (SSE-C), tú administras las claves de cifrado y Amazon S3 gestiona el cifrado, cuando escribe en los discos, y el descifrado cuando accedes a tus objetos. Sin embargo, esta opción no ofrece la posibilidad de realizar un seguimiento de auditoría del uso de las claves de cifrado.
+
+Utilizar la encriptación del lado del cliente con claves proporcionadas por el cliente y luego subir los datos de usuario encriptados a S3 - El uso de la encriptación del lado del cliente está descartado, ya que la startup no quiere proporcionar las claves de encriptación.
+
+Referencias:
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html

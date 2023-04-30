@@ -1,0 +1,42 @@
+Una de las mayores ligas de fútbol de Europa ha concedido los derechos de distribución para la retransmisión en directo de sus partidos en EE.UU. a una empresa de servicios de streaming con sede en Silicon Valley. Según las condiciones de distribución, la empresa debe asegurarse de que sólo los usuarios de EE.UU. puedan visualizar en directo los partidos en su plataforma. A los usuarios de otros países del mundo se les debe denegar el acceso a estos partidos retransmitidos en directo.
+
+¿Cuál de las siguientes opciones permitiría a la empresa aplicar estas restricciones de streaming? (Selecciona dos)
+
+
+
+Explicación
+Opciones correctas:
+
+Utiliza la política de enrutamiento de geolocalización basada en Route 53 para restringir la distribución de contenidos sólo a las ubicaciones en las que tengas derechos de distribución
+
+El enrutamiento por geolocalización te permite elegir los recursos que sirven tu tráfico en función de la ubicación geográfica de tus usuarios, es decir, la ubicación desde la que se originan las consultas DNS. Por ejemplo, puede que quieras que todas las consultas procedentes de Europa se dirijan a un equilibrador de carga ELB de la región de Frankfurt. También puedes utilizar el enrutamiento por geolocalización para restringir la distribución de contenidos sólo a las ubicaciones en las que tengas derechos de distribución.
+
+Utiliza la georestricción para impedir que los usuarios de determinadas ubicaciones geográficas accedan al contenido que distribuyes a través de una distribución web de CloudFront.
+
+Puedes utilizar la georestricción, también conocida como bloqueo geográfico, para impedir que los usuarios de ubicaciones geográficas específicas accedan al contenido que distribuyes a través de una distribución web de CloudFront. Cuando un usuario solicita tu contenido, CloudFront suele servir el contenido solicitado independientemente de dónde se encuentre el usuario. Si necesitas impedir que los usuarios de determinados países accedan a tu contenido, puedes utilizar la función de restricción geográfica de CloudFront para realizar una de las siguientes acciones: Permitir que tus usuarios accedan a tu contenido sólo si se encuentran en uno de los países de una lista blanca de países aprobados. Impedir que tus usuarios accedan a tu contenido si se encuentran en uno de los países de una lista negra de países prohibidos. Esta opción también es correcta.
+
+Visión general de la política de enrutamiento de Route 53:
+IMG 57
+
+vía - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
+
+Opciones incorrectas:
+
+Utiliza la política de enrutamiento basado en latencia de Route 53 para restringir la distribución de contenido sólo a las ubicaciones en las que tengas derechos de distribución - Utiliza el enrutamiento basado en latencia cuando tengas recursos en varias regiones de AWS y quieras enrutar el tráfico a la región que proporcione la latencia más baja. Para utilizar el enrutamiento basado en la latencia, crea registros de latencia para tus recursos en varias regiones de AWS. Cuando Route 53 recibe una consulta DNS para tu dominio o subdominio (ejemplo.com o acme.ejemplo.com), determina para qué regiones de AWS has creado registros de latencia, determina qué región proporciona al usuario la latencia más baja y, a continuación, selecciona un registro de latencia para esa región. Route 53 responde con el valor del registro seleccionado, como la dirección IP de un servidor web.
+
+Utiliza la política de enrutamiento ponderado basada en Route 53 para restringir la distribución de contenidos sólo a las ubicaciones en las que tengas derechos de distribución - El enrutamiento ponderado te permite asociar varios recursos a un único nombre de dominio (ejemplo.com) o subdominio (acme.ejemplo.com) y elegir cuánto tráfico se enruta a cada recurso. Esto puede ser útil para diversos fines, como equilibrar la carga y probar nuevas versiones del software.
+
+Utiliza la política de enrutamiento de conmutación por error basada en Route 53 para restringir la distribución de contenido sólo a las ubicaciones en las que tengas derechos de distribución - El enrutamiento de conmutación por error te permite dirigir el tráfico a un recurso cuando éste está sano o a un recurso diferente cuando el primero no lo está. Los registros primario y secundario pueden enrutar el tráfico a cualquier cosa, desde un bucket de Amazon S3 configurado como sitio web hasta un complejo árbol de registros
+
+El enrutamiento ponderado, el enrutamiento de conmutación por error o el enrutamiento de latencia no pueden utilizarse para restringir la distribución de contenidos sólo a las ubicaciones en las que tengas derechos de distribución. Por tanto, las tres opciones anteriores son incorrectas.
+
+Referencias:
+
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-geo
+
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-geo
+
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-geo
+
+
+

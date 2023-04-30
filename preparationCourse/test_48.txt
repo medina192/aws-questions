@@ -1,0 +1,28 @@
+Una empresa de telecomunicaciones opera miles de dispositivos de hardware como conmutadores, routers, cables, etc. Los datos de estado en tiempo real de estos dispositivos deben introducirse en una aplicación de comunicaciones para recibir notificaciones. Simultáneamente, otra aplicación de análisis debe leer los mismos datos de estado en tiempo real y analizar todas las líneas de conexión que puedan caerse debido a algún fallo de los dispositivos.
+
+Como arquitecto de soluciones, ¿cuál de las siguientes soluciones sugerirías, para que ambas aplicaciones puedan consumir los datos de estado en tiempo real de forma concurrente?
+
+
+Explicación
+Opción correcta:
+
+Amazon Kinesis Data Streams - Amazon Kinesis Data Streams permite el procesamiento en tiempo real de big data en streaming. Proporciona la ordenación de registros, así como la capacidad de leer y/o reproducir registros en el mismo orden a múltiples aplicaciones de Amazon Kinesis. La biblioteca de clientes de Amazon Kinesis (KCL) entrega todos los registros de una clave de partición determinada al mismo procesador de registros, lo que facilita la creación de varias aplicaciones que lean del mismo Kinesis Data Stream (por ejemplo, para realizar recuentos, agregaciones y filtrados).
+
+AWS recomienda Amazon Kinesis Data Streams para casos de uso con requisitos similares a los siguientes:
+
+Enrutar los registros relacionados al mismo procesador de registros (como en el streaming MapReduce). Por ejemplo, el recuento y la agregación son más sencillos cuando todos los registros de una clave determinada se dirigen al mismo procesador de registros.
+Ordenación de registros. Por ejemplo, quieres transferir datos de registro del host de aplicación al host de procesamiento/archivo manteniendo el orden de las sentencias de registro.
+Posibilidad de que varias aplicaciones consuman el mismo flujo simultáneamente. Por ejemplo, tienes una aplicación que actualiza un panel de control en tiempo real y otra que archiva datos en Amazon Redshift. Quieres que ambas aplicaciones consuman datos del mismo flujo de forma concurrente e independiente.
+Capacidad para consumir registros en el mismo orden unas horas más tarde. Por ejemplo, tienes una aplicación de facturación y una aplicación de auditoría que se ejecuta unas horas por detrás de la aplicación de facturación. Como Amazon Kinesis Data Streams almacena datos de hasta 365 días, puedes ejecutar la aplicación de auditoría hasta 365 días detrás de la aplicación de facturación.
+Opciones incorrectas:
+
+Amazon Simple Notification Service (SNS) - Amazon Simple Notification Service (SNS) es un servicio de mensajería pub/sub de alta disponibilidad, duradero, seguro y totalmente administrado que te permite desacoplar microservicios, sistemas distribuidos y aplicaciones sin servidor. Amazon SNS proporciona temas para mensajería de muchos a muchos, de alto rendimiento y basada en push. SNS es un servicio de notificación y no puede utilizarse para procesar datos en tiempo real.
+
+Amazon Simple Queue Service (SQS) con Amazon Simple Notification Service (SNS) - Amazon Simple Queue Service (Amazon SQS) ofrece una cola hospedada fiable y altamente escalable para almacenar mensajes mientras viajan entre ordenadores. Amazon SQS te permite mover datos fácilmente entre componentes de aplicaciones distribuidas y te ayuda a crear aplicaciones en las que los mensajes se procesan de forma independiente (con semántica ack/fail a nivel de mensaje), como los flujos de trabajo automatizados. Dado que varias aplicaciones necesitan consumir el mismo flujo de datos de forma concurrente, Kinesis es una mejor opción en comparación con la combinación de SQS con SNS.
+
+Amazon Simple Queue Service (SQS) con Amazon Simple Email Service (Amazon SES) - Como se ha comentado anteriormente, Kinesis es una mejor opción para este caso de uso en comparación con SQS. Además, SES no se ajusta a este caso de uso. Por lo tanto, esta opción es una respuesta incorrecta.
+
+Referencia:
+
+https://aws.amazon.com/kinesis/data-streams/faqs/
+

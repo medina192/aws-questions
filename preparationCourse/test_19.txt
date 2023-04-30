@@ -1,0 +1,34 @@
+Un departamento de auditoría genera y accede a los informes de auditoría sólo dos veces en un ejercicio financiero. El departamento utiliza AWS Step Functions para orquestar el proceso de creación de informes que tiene escenarios de conmutación por error y reintento integrados en la solución. Los datos subyacentes para crear estos informes de auditoría se almacenan en S3, ocupan cientos de Terabytes y deben estar disponibles con una latencia de milisegundos.
+
+Como arquitecto de soluciones, ¿cuál es la clase de almacenamiento MÁS rentable que recomendarías utilizar 
+para este caso de uso?
+
+
+Explicación
+Opción correcta:
+
+* Amazon S3 Standard-Infrequent Access (S3 Standard-IA)
+
+Como sólo se accede a los datos dos veces en un ejercicio, pero se necesita un acceso rápido cuando se necesitan, la clase de almacenamiento más rentable para este caso de uso es S3 Standard-IA. La clase de almacenamiento S3 Estándar-IA es para datos a los que se accede con menos frecuencia, pero que requieren un acceso rápido cuando se necesitan. S3 Standard-IA iguala la alta durabilidad, el alto rendimiento y la baja latencia de S3 Standard, con un bajo precio por GB de almacenamiento y por GB de recuperación. Standard-IA está diseñado para una disponibilidad del 99,9%, en comparación con la disponibilidad del 99,99% de S3 Standard. Sin embargo, el proceso de creación de informes tiene escenarios de conmutación por error y reintento integrados en el flujo de trabajo, por lo que en caso de que los datos no estén disponibles debido a la disponibilidad del 99,9% de S3 Estándar-IA, el trabajo se reiniciará automáticamente hasta que los datos se recuperen correctamente. Por tanto, esta es la opción correcta.
+
+Visión general de las clases de almacenamiento S3:
+IMG 19
+
+
+vía - https://aws.amazon.com/s3/storage-classes/
+
+Opciones incorrectas:
+
+Amazon S3 Standard - S3 Standard (Estándar) ofrece almacenamiento de objetos de alta durabilidad, disponibilidad y rendimiento para datos a los que se accede con frecuencia. Como se ha descrito anteriormente, el almacenamiento S3 Standard-IA se ajusta mejor que S3 Standard, por lo que el uso de S3 Standard queda descartado para el caso de uso dado.
+
+Amazon S3 Intelligent-Tiering (S3 Intelligent-Tiering) - Por un pequeño cargo mensual de supervisión y automatización de objetos, S3 Intelligent-Tiering supervisa los patrones de acceso y mueve automáticamente los objetos a los que no se ha accedido a niveles de acceso de menor coste. La clase de almacenamiento S3 Intelligent-Tiering está diseñada para optimizar los costes moviendo automáticamente los datos al nivel de acceso más rentable, sin impacto en el rendimiento ni sobrecarga operativa. S3 Standard-IA iguala la alta durabilidad, el alto rendimiento y la baja latencia de S3 Intelligent-Tiering, con un bajo precio por GB de almacenamiento y por GB de recuperación. Además, Standard-IA tiene la misma disponibilidad que S3 Intelligent-Tiering. Por tanto, es rentable utilizar S3 Estándar-IA en lugar de S3 Intelligent-Tiering.
+
+Amazon S3 Glacier Deep Archive - S3 Glacier Deep Archive es una clase de almacenamiento segura, duradera y de bajo coste para archivar datos. S3 Glacier Deep Archive no admite latencia de milisegundos, por lo que esta opción queda descartada.
+
+Para más detalles sobre la durabilidad, disponibilidad, coste y latencia de acceso, consulta este enlace de referencia: https://aws.amazon.com/s3/storage-classes
+
+
+
+
+
+

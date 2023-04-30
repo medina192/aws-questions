@@ -1,0 +1,44 @@
+Un becario de ingeniería de software de una empresa de comercio electrónico está documentando el flujo de procesos para aprovisionar instancias EC2 a través de la API de Amazon EC2. Estas instancias se van a utilizar para una aplicación interna que procesa datos de nóminas de RRHH. Quiere destacar los tipos de volumen que no pueden utilizarse como volumen de arranque.
+
+¿Puedes ayudar al becario identificando los tipos de volúmenes de almacenamiento que NO se pueden utilizar como volúmenes de arranque al crear las instancias? (Selecciona dos)
+
+
+Explicación
+Opciones correctas:
+
+Disco duro de rendimiento optimizado (st1)
+
+Disco duro frío (sc1)
+
+Los tipos de volumen EBS se dividen en dos categorías:
+
+Volúmenes respaldados por SSD optimizados para cargas de trabajo transaccionales que implican operaciones frecuentes de lectura/escritura con un tamaño de E/S pequeño, donde el atributo de rendimiento dominante son las IOPS.
+
+Volúmenes respaldados por HDD optimizados para grandes cargas de trabajo de streaming, donde el rendimiento (medido en MiB/s) es una medida de rendimiento mejor que las IOPS.
+
+Los tipos de volumen HDD de rendimiento optimizado (st1) y HDD frío (sc1) NO PUEDEN utilizarse como volumen de arranque, por lo que estas dos opciones son correctas.
+
+Consulta esta descripción detallada de los tipos de volúmenes EBS.
+IMG 29
+
+
+vía - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
+
+Opciones incorrectas:
+
+SD de propósito general (gp2)
+
+IOPS aprovisionadas SSD (io1)
+
+Almacén de instancias
+
+Como volumen de arranque se pueden utilizar SSD de propósito general (gp2), SSD de IOPS provisionadas (io1) y Almacén de Instancias.
+
+Referencias:
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html
+
+
+

@@ -1,0 +1,35 @@
+El equipo de ingeniería de una empresa de fitness a domicilio está evaluando varios almacenes de datos en memoria con capacidad para alimentar su tabla de clasificación en directo y bajo demanda. La tabla de clasificación de la empresa requiere alta disponibilidad, baja latencia y procesamiento en tiempo real para ofrecer datos de usuario personalizables a la comunidad de usuarios que entrenan juntos virtualmente desde la comodidad de su hogar.
+
+Como arquitecto de soluciones, ¿cuál de las siguientes soluciones recomendarías? (Selecciona dos)
+
+
+Explicación
+Opciones correctas:
+
+Impulsa la clasificación en directo y bajo demanda utilizando ElastiCache Redis, ya que cumple los requisitos de alta disponibilidad, baja latencia y memoria.
+
+Amazon ElastiCache para Redis es un rapidísimo almacén de datos en memoria que proporciona una latencia inferior al milisegundo para impulsar aplicaciones en tiempo real a escala de Internet. Amazon ElastiCache para Redis es una gran elección para casos de uso de procesamiento transaccional y analítico en tiempo real, como almacenamiento en caché, chat/mensajería, tablas de clasificación de juegos, geoespacial, aprendizaje automático, transmisión multimedia, colas, análisis en tiempo real y almacenamiento de sesiones. ElastiCache para Redis puede utilizarse para alimentar la tabla de clasificación en directo, por lo que esta opción es correcta.
+
+Visión general de ElastiCache para Redis:
+IMG 24
+
+
+*Impulsa la clasificación en directo y bajo demanda utilizando DynamoDB con el Acelerador DynamoDB (DAX), ya que cumple los requisitos de alta disponibilidad, baja latencia y memoria.
+
+Amazon DynamoDB es una base de datos de valores clave y documentos que ofrece un rendimiento de milisegundos de un solo dígito a cualquier escala. Es una base de datos totalmente gestionada, multirregión, multimaster y duradera, con seguridad, copia de seguridad y restauración integradas, y almacenamiento en caché en memoria para aplicaciones a escala de Internet. DAX es un servicio de almacenamiento en caché compatible con DynamoDB que te permite beneficiarte de un rápido rendimiento en memoria para aplicaciones exigentes. Así, DynamoDB con DAX puede utilizarse para impulsar la tabla de clasificación en directo.
+
+Opciones incorrectas:
+
+* AWS Neptune es un servicio de base de datos de gráficos rápido, fiable y totalmente administrado que facilita la creación y ejecución de aplicaciones que trabajan con conjuntos de datos altamente conectados. Neptune no es una base de datos en memoria, por lo que esta opción no es correcta.
+
+* Impulsa la clasificación en directo y bajo demanda utilizando DynamoDB, ya que cumple los requisitos de alta disponibilidad, baja latencia y memoria - DynamoDB no es una base de datos en memoria, por lo que esta opción no es correcta.
+
+* Amazon Aurora es una base de datos relacional compatible con MySQL y PostgreSQL creada para la nube, que combina el rendimiento y la disponibilidad de las bases de datos empresariales tradicionales con la sencillez y la rentabilidad de las bases de datos de código abierto. Amazon Aurora cuenta con un sistema de almacenamiento distribuido, tolerante a fallos y autorreparable que se autoescala hasta 128 TB por instancia de base de datos. Aurora no es una base de datos en memoria, por lo que esta opción no es correcta.
+
+Referencias:
+
+https://aws.amazon.com/elasticache/
+
+https://aws.amazon.com/elasticache/redis/
+
+https://aws.amazon.com/dynamodb/dax/

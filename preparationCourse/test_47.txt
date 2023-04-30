@@ -1,0 +1,31 @@
+Un servicio líder de streaming de vídeo entrega miles de millones de horas de contenido desde Amazon S3 a clientes de todo el mundo. Amazon S3 también sirve como lago de datos para su solución de análisis de big data. El lago de datos tiene una zona de almacenamiento donde los resultados de las consultas intermedias se guardan sólo durante 24 horas. Estos resultados también son muy consultados por otras partes de la canalización analítica.
+
+¿Cuál de las siguientes es la estrategia MÁS rentable para almacenar estos datos de consulta intermedios?
+
+
+
+
+Explicación
+Opción correcta:
+
+Almacena los resultados de la consulta intermedia en la clase de almacenamiento S3 Estándar
+
+S3 Estándar ofrece almacenamiento de objetos de alta durabilidad, disponibilidad y rendimiento para datos a los que se accede con frecuencia. Dado que ofrece baja latencia y alto rendimiento, S3 Estándar es adecuado para una amplia variedad de casos de uso, como aplicaciones en la nube, sitios web dinámicos, distribución de contenidos, aplicaciones móviles y de juegos, y análisis de big data. Como no se cobra una duración mínima de almacenamiento ni una cuota de recuperación (recuerda que los resultados de las consultas intermedias son muy consultados por otras partes de la canalización analítica), ésta es la clase de almacenamiento MÁS rentable entre las opciones dadas.
+
+Opciones incorrectas:
+
+Almacena los resultados de la consulta intermedia en la clase de almacenamiento S3 Glacier Instant Retrieval - S3 Glacier Instant Retrieval ofrece el acceso más rápido al almacenamiento de archivo, con el mismo rendimiento y acceso en milisegundos que las clases de almacenamiento S3 Standard y S3 Standard-IA. S3 Glacier Instant Retrieval es ideal para datos de archivo que necesitan acceso inmediato, como imágenes médicas, activos de medios informativos o archivos de contenido generado por usuarios.
+
+El cargo mínimo por duración de almacenamiento es de 90 días, por lo que esta opción NO es rentable, ya que los resultados de las consultas intermedias sólo deben conservarse durante 24 horas. Por tanto, esta opción no es correcta.
+
+Almacena los resultados de la consulta intermedia en la clase de almacenamiento S3 Estándar-Acceso Frecuente - S3 Estándar-IA es para datos a los que se accede con menos frecuencia, pero que requieren un acceso rápido cuando se necesitan. S3 Standard-IA ofrece la alta durabilidad, el alto rendimiento y la baja latencia de S3 Standard, con un bajo precio por GB de almacenamiento y por GB de recuperación. Esta combinación de bajo coste y alto rendimiento hace que S3 Estándar-IA sea ideal para almacenamiento a largo plazo, copias de seguridad y como almacén de datos para archivos de recuperación ante desastres. El cargo por duración mínima de almacenamiento es de 30 días, por lo que esta opción NO es rentable, ya que los resultados de las consultas intermedias sólo deben conservarse durante 24 horas. Por tanto, esta opción no es correcta.
+
+Almacena los resultados de la consulta intermedia en la clase de almacenamiento S3 Una Zona-Acceso Frecuente - S3 One Zone-IA es para datos a los que se accede con menos frecuencia, pero que requieren un acceso rápido cuando se necesitan. A diferencia de otras clases de almacenamiento S3, que almacenan los datos en un mínimo de tres zonas de disponibilidad (AZ), S3 One Zone-IA almacena los datos en una sola AZ y cuesta un 20% menos que S3 Standard-IA. El cargo por duración mínima de almacenamiento es de 30 días, por lo que esta opción NO es rentable, ya que los resultados de las consultas intermedias sólo deben conservarse durante 24 horas. Por tanto, esta opción no es correcta.
+
+Resumiendo de nuevo, S3 Standard-IA y S3 One Zone-IA tienen un cargo por duración mínima de almacenamiento de 30 días (por lo que en lugar de 24 horas, acabas pagando por 30 días). S3 Standard-IA y S3 One Zone-IA también tienen cargos por recuperación (ya que los resultados están muy referenciados por otras partes de la canalización analítica, por lo que los costes de recuperación serían bastante elevados). Por lo tanto, estas clases de almacenamiento no tienen un coste óptimo para el caso de uso dado.
+
+Referencia:
+
+https://aws.amazon.com/s3/storage-classes/
+
+

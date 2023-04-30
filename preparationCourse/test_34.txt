@@ -1,0 +1,45 @@
+Una empresa ha desarrollado una API REST que se despliega en un grupo de autoescalado detrás de un Application Load Balancer. La API almacena los datos de usuario en DynamoDB y cualquier contenido estático, como imágenes, se sirve a través de S3. Al analizar las tendencias de uso, se observa que el 90% de las solicitudes de lectura son para datos de acceso común entre todos los usuarios.
+
+Como arquitecto de soluciones, ¿cuál de las siguientes sugerirías como la solución MÁS eficaz para mejorar el rendimiento de la aplicación?
+
+
+
+Opción correcta:
+
+Habilitar el Acelerador de DynamoDB (DAX) y CloudFront para S3
+
+DynamoDB Accelerator (DAX) es una caché en memoria totalmente gestionada y de alta disponibilidad para Amazon DynamoDB que ofrece una mejora del rendimiento de hasta 10 veces -de milisegundos a microsegundos- incluso con millones de solicitudes por segundo.
+
+DAX está estrechamente integrado con DynamoDB: sólo tienes que aprovisionar un clúster DAX, utilizar el SDK de cliente DAX para dirigir tus llamadas a la API de DynamoDB al clúster DAX y dejar que DAX se encargue del resto. Como DAX es compatible con la API de DynamoDB, no tienes que hacer ningún cambio en el código funcional de la aplicación. DAX se utiliza para almacenar en caché de forma nativa las lecturas de DynamoDB.
+
+CloudFront es un servicio de red de entrega de contenidos (CDN) que entrega contenido web estático y dinámico, secuencias de vídeo y API en todo el mundo, de forma segura y a escala. Por su diseño, entregar datos desde CloudFront puede ser más rentable que entregarlos desde S3 directamente a tus usuarios.
+
+Cuando un usuario solicita contenido que sirves con CloudFront, su solicitud se enruta a una ubicación de borde cercana. Si CloudFront tiene una copia en caché del archivo solicitado, CloudFront lo entrega al usuario, proporcionando una respuesta rápida (baja latencia). Si el archivo que han solicitado aún no está almacenado en caché, CloudFront lo recupera de tu origen, por ejemplo, el bucket de S3 donde has almacenado tu contenido.
+
+Por lo tanto, puedes utilizar CloudFront para mejorar el rendimiento de la aplicación para servir contenido estático desde S3.
+
+Opciones incorrectas:
+
+Habilita ElastiCache Redis para DynamoDB y CloudFront para S3
+
+Amazon ElastiCache para Redis es un rapidísimo almacén de datos en memoria que proporciona una latencia inferior al milisegundo para impulsar aplicaciones en tiempo real a escala de Internet. Amazon ElastiCache para Redis es una gran elección para casos de uso de procesamiento transaccional y analítico en tiempo real, como almacenamiento en caché, chat/mensajería, tablas de clasificación de juegos, geoespacial, aprendizaje automático, transmisión multimedia, colas, análisis en tiempo real y almacenamiento de sesiones.
+
+Visión general de ElastiCache para Redis: Visión general de ElastiCache para Redis vía - https://aws.amazon.com/elasticache/redis/
+
+Aunque puedes integrar Redis con DynamoDB, es mucho más complicado que utilizar DAX, que encaja mucho mejor.
+
+Habilitar DAX para DynamoDB y ElastiCache Memcached para S3
+
+Habilita ElastiCache Redis para DynamoDB y ElastiCache Memcached para S3
+
+Amazon ElastiCache para Memcached es un servicio de almacén de valores clave en memoria compatible con Memcached que puede utilizarse como caché o almacén de datos. Amazon ElastiCache para Memcached es una gran opción para implementar una caché en memoria que reduzca la latencia de acceso, aumente el rendimiento y alivie la carga de tu base de datos relacional o NoSQL.
+
+ElastiCache Memcached no puede utilizarse como caché para servir contenido estático desde S3, por lo que ambas opciones son incorrectas.
+
+Referencias:
+
+https://aws.amazon.com/dynamodb/dax/
+
+https://aws.amazon.com/blogs/networking-and-content-delivery/amazon-s3-amazon-cloudfront-a-match-made-in-the-cloud/
+
+https://aws.amazon.com/elasticache/redis/

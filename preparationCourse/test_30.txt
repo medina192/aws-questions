@@ -1,0 +1,36 @@
+Como parte de un programa piloto, una empresa de biotecnología quiere integrar archivos de datos de su aplicación analítica on-premise con la nube de AWS mediante una interfaz NFS.
+
+¿Cuál de los siguientes servicios de AWS es la solución MÁS eficaz para el caso de uso planteado?
+
+
+
+Explicación
+Opción correcta:
+
+AWS Storage Gateway - File Gateway
+
+AWS Storage Gateway es un servicio de almacenamiento en la nube híbrida que te proporciona acceso local a un almacenamiento en la nube prácticamente ilimitado. El servicio proporciona tres tipos diferentes de puertas de enlace -puerta de enlace de cintas (Tape Gateway), puerta de enlace de archivos (File Gateway) y Puerta de enlace de volúmenes- que conectan sin problemas las aplicaciones locales con el almacenamiento en la nube, almacenando los datos en caché local para un acceso de baja latencia.
+
+La interfaz de archivos de AWS Storage Gateway, o gateway de archivos, te ofrece una forma sencilla de conectarte a la nube para almacenar archivos de datos de aplicaciones e imágenes de backup como objetos duraderos en el almacenamiento en la nube Amazon S3. El File Gateway ofrece acceso basado en SMB o NFS a los datos de Amazon S3 con almacenamiento local en caché. Como la empresa quiere integrar archivos de datos de sus instrumentos analíticos en AWS a través de una interfaz NFS, por tanto AWS Storage Gateway - File Gateway es la respuesta correcta.
+
+vía - https://docs.aws.amazon.com/storagegateway/latest/userguide/StorageGatewayConcepts.html
+
+Opciones incorrectas:
+
+AWS Storage Gateway - Volume Gateway - Puedes configurar el servicio AWS Storage Gateway como Volume Gateway para presentar volúmenes de almacenamiento de bloques iSCSI basados en la nube a tus aplicaciones locales. Volume Gateway no admite la interfaz NFS, por lo que esta opción no es correcta.
+
+AWS Storage Gateway - Tape Gateway - AWS Storage Gateway - Tape Gateway permite mover copias de seguridad en cinta a la nube. Tape Gateway no admite la interfaz NFS, por lo que esta opción no es correcta.
+
+AWS Site-to-Site VPN - AWS Site-to-Site VPN te permite conectar de forma segura tu red local o el sitio de tu sucursal a tu Amazon Virtual Private Cloud (Amazon VPC). Puedes ampliar de forma segura la red de tu centro de datos o sucursal a la nube con una conexión AWS Site-to-Site VPN (VPN de sitio a sitio). Utiliza comunicaciones de protocolo de seguridad de Internet (IPSec) para crear túneles VPN cifrados entre dos ubicaciones. No puedes utilizar AWS Site-to-Site VPN para integrar archivos de datos a través de la interfaz NFS, por lo que esta opción no es correcta.
+
+Referencias:
+
+https://aws.amazon.com/storagegateway/
+
+https://aws.amazon.com/storagegateway/volume/
+
+https://aws.amazon.com/storagegateway/file/
+
+https://aws.amazon.com/storagegateway/vtl/
+
+

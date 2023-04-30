@@ -1,0 +1,37 @@
+Una universidad de la Ivy League está ayudando a la NASA a encontrar posibles lugares de aterrizaje para vehículos de exploración de misiones no tripuladas a nuestros planetas vecinos. La universidad utiliza una arquitectura de aplicación impulsada por la Computación de Alto Rendimiento (HPC) para identificar estos lugares de aterrizaje.
+
+¿En cuál de las siguientes topologías de instancia EC2 debería desplegarse esta aplicación?
+
+Explicación
+Opción correcta:
+
+Las instancias EC2 deben desplegarse en un grupo de colocación en clúster para que la carga de trabajo subyacente pueda beneficiarse de una baja latencia de red y un alto rendimiento de red
+
+La clave que hay que entender en esta pregunta es que las cargas de trabajo HPC necesitan conseguir un rendimiento de red de baja latencia, necesario para la comunicación estrechamente acoplada de nodo a nodo que es típica de las aplicaciones HPC. Los grupos de colocación en clúster empaquetan las instancias muy juntas dentro de una zona de disponibilidad. Se recomiendan para aplicaciones que se benefician de una baja latencia de red, un alto rendimiento de red, o ambos. Por tanto, esta opción es la respuesta correcta.
+
+Grupo de colocación en Clusters:
+IMG 49
+
+vía - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
+
+Opciones incorrectas:
+
+Las instancias EC2 deben desplegarse en un grupo de colocación de particiones para que las cargas de trabajo distribuidas puedan manejarse con eficacia - Un grupo de colocación de particiones distribuye tus instancias por particiones lógicas, de modo que los grupos de instancias de una partición no compartan el hardware subyacente con grupos de instancias de particiones diferentes. Esta estrategia la suelen utilizar las grandes cargas de trabajo distribuidas y replicadas, como Hadoop, Cassandra y Kafka. Un grupo de colocación de particiones puede tener un máximo de siete particiones por zona de disponibilidad. Puesto que un grupo de colocación de particiones puede tener particiones en varias zonas de disponibilidad (AZ) de la misma región, las instancias no tendrán un rendimiento de red de baja latencia. De ahí que el grupo de colocación de particiones no sea el más adecuado para las aplicaciones HPC.
+
+Grupo de colocación de particiones:
+IMG 49_2
+
+vía - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
+
+Las instancias EC2 deben desplegarse en un grupo de colocación dispersa para que no haya fallos correlacionados - Un grupo de colocación dispersa es un grupo de instancias que se colocan cada una en bastidores distintos, y cada bastidor tiene su propia red y fuente de alimentación. Las instancias se colocan en hardware subyacente distinto para reducir los fallos correlacionados. Puedes tener un máximo de siete instancias en ejecución por zona de disponibilidad y por grupo. Puesto que un grupo de colocación dispersa puede abarcar varias zonas de disponibilidad (AZ) en la misma región, las instancias no tendrán un rendimiento de red de baja latencia. Por lo tanto, el grupo de colocación dispersa no es el más adecuado para las aplicaciones HPC.
+
+Grupo de colocación de Spread:
+IMG 49_3
+
+vía - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
+
+Las instancias EC2 deben desplegarse en un grupo de Auto Scaling para que la aplicación cumpla los requisitos de alta disponibilidad - Un grupo de Auto Scaling contiene una colección de instancias de Amazon EC2 que se tratan como una agrupación lógica a efectos de escalado automático. No se utilizan grupos de Autoescalado per se para cumplir los requisitos de HPC.
+
+Referencia:
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html

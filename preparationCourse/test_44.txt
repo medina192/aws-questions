@@ -1,0 +1,28 @@
+Una empresa de servicios financieros lanzó recientemente una iniciativa para mejorar la seguridad de sus recursos de AWS y había habilitado AWS Shield Advanced en varias cuentas de AWS propiedad de la empresa. Tras un análisis, la empresa ha descubierto que los costes incurridos son mucho mayores de lo esperado.
+
+¿Cuál de las siguientes atribuirías como razón subyacente de los costes inesperadamente elevados del servicio AWS Shield Advanced?
+
+
+
+
+
+Explicación
+Opción correcta:
+
+No se ha habilitado la facturación consolidada. Todas las cuentas de AWS deben estar bajo una única facturación consolidada para que la cuota mensual se cobre una sola vez - Si tu organización tiene varias cuentas de AWS, puedes suscribir varias cuentas de AWS a AWS Shield Advanced habilitándolo individualmente en cada cuenta mediante la consola de administración de AWS o la API. Pagarás la cuota mensual una sola vez siempre que las cuentas de AWS estén todas bajo una única facturación consolidada, y seas el propietario de todas las cuentas y recursos de AWS en esas cuentas.
+
+Opciones incorrectas:
+
+AWS Shield Advanced se está utilizando para servidores personalizados, que no forman parte de la nube de AWS, lo que provoca un aumento de los costes - AWS Shield Advanced sí ofrece protección a los recursos fuera de AWS. Esto no debería causar un aumento inesperado de los costes de facturación.
+
+AWS Shield Advanced también cubre el plan AWS Shield Standard, con el consiguiente aumento de costes - AWS Shield Standard se habilita automáticamente para todos los clientes de AWS sin coste adicional. AWS Shield Advanced es un servicio opcional de pago.
+
+Los planes de ahorro no se han habilitado para el servicio AWS Shield Advanced en todas las cuentas de AWS - Esta opción se ha añadido como distractor. Los Planes de Ahorro son un modelo de precios flexible que ofrece precios bajos en el uso de EC2, Lambda y Fargate, a cambio de comprometerse a una cantidad constante de uso (medida en $/hora) durante un plazo de 1 ó 3 años. Los Planes de Ahorro no son aplicables al servicio AWS Shield Advanced.
+
+Referencias:
+
+https://aws.amazon.com/shield/faqs/
+
+https://aws.amazon.com/savingsplans/faq/
+
+

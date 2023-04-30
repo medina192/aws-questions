@@ -1,0 +1,33 @@
+Una empresa social de intercambio de fotos utiliza Amazon S3 para almacenar las imágenes subidas por los usuarios. Estas imágenes se guardan cifradas en S3 utilizando AWS-KMS y la empresa gestiona su propia Clave Maestra de Cliente (CMK) para el cifrado. Un miembro del equipo de DevOps borró accidentalmente la CMK hace un día, con lo que los datos de las fotos de los usuarios quedaron irrecuperables. La empresa se ha puesto en contacto contigo para consultarte sobre posibles soluciones a esta crisis.
+
+Como arquitecto de soluciones, ¿cuál de los siguientes pasos recomendarías para resolver este problema?
+
+
+Opción correcta:
+
+* Como la CMK se borró hace un día, debe estar en estado "pendiente de borrado", por lo que puedes cancelar el borrado de la CMK y recuperar la clave.
+
+AWS Key Management Service (KMS) te facilita la creación y administración de claves criptográficas y el control de su uso en una amplia gama de servicios de AWS y en tus aplicaciones. AWS KMS es un servicio seguro y resistente que utiliza módulos de seguridad de hardware validados según FIPS 140-2.
+
+Eliminar una clave maestra de cliente (CMK) en AWS Key Management Service (AWS KMS) es destructivo y potencialmente peligroso. Por ello, AWS KMS impone un periodo de espera. Para eliminar una CMK en AWS KMS debes programar la eliminación de la clave. Puedes establecer el periodo de espera desde un mínimo de 7 días hasta un máximo de 30 días. El periodo de espera por defecto es de 30 días. Durante el periodo de espera, el estado de la CMK y de la clave es Pendiente de borrado. Para recuperar la CMK, puedes cancelar el borrado de la clave antes de que finalice el periodo de espera. Una vez finalizado el periodo de espera, no podrás cancelar el borrado de claves, y AWS KMS borrará la CMK.
+
+Cómo funciona el borrado de claves maestras de cliente:
+IMG 16
+
+
+
+vía - https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html
+
+Opciones incorrectas:
+
+Contacta con AWS support para recuperar la CMK de su copia de seguridad
+
+El CMK puede ser recuperado por el usuario de la cuenta raíz de AWS
+
+El usuario de la cuenta raíz de AWS no puede recuperar CMK y el soporte de AWS no tiene acceso a CMK a través de ninguna copia de seguridad. Ambas opciones sólo sirven como distractores.
+
+La empresa debe emitir una notificación en su aplicación web informando a los usuarios de la pérdida de sus datos - Esta opción no es necesaria, ya que los datos pueden recuperarse mediante la función de cancelación de borrado de claves.
+
+Referencia:
+
+https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html

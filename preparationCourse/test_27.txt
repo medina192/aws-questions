@@ -1,0 +1,46 @@
+El equipo de producto de una startup ha descubierto una necesidad del mercado de admitir comunicaciones cliente-servidor con estado y sin estado a través de las API desarrolladas con su plataforma. La startup te ha contratado como arquitecto de soluciones para crear una solución que satisfaga esta necesidad del mercado utilizando AWS API Gateway.
+
+¿Cuál de las siguientes identificarías como correcta?
+
+Explicación
+Opción correcta:
+
+* API Gateway crea API RESTful que permiten la comunicación cliente-servidor sin estado y API Gateway también crea API WebSocket que se adhieren al protocolo WebSocket, que permite la comunicación dúplex completa y con estado entre cliente y servidor.
+
+Amazon API Gateway es un servicio totalmente administrado que facilita a los desarrolladores la creación, publicación, mantenimiento, monitorización y seguridad de API a cualquier escala. Las API actúan como puerta de entrada para que las aplicaciones accedan a los datos, la lógica empresarial o la funcionalidad de tus servicios backend. Con API Gateway, puedes crear API RESTful y API WebSocket que permitan aplicaciones de comunicación bidireccional en tiempo real.
+
+Cómo funciona API Gateway:
+IMG 27
+
+
+vía - https://aws.amazon.com/api-gateway/
+
+API Gateway crea API RESTful que:
+
+Se basan en HTTP.
+
+Activa la comunicación cliente-servidor sin estado.
+
+Implementa métodos HTTP estándar como GET, POST, PUT, PATCH y DELETE.
+
+API Gateway crea APIs WebSocket que:
+
+Se adhieren al protocolo WebSocket, que permite la comunicación dúplex completa y con estado entre el cliente y el servidor. Enruta los mensajes entrantes en función de su contenido.
+
+Por tanto, API Gateway admite tanto las API RESTful sin estado como las API WebSocket con estado. Por tanto, esta opción es correcta.
+
+Opciones incorrectas:
+
+* API Gateway crea API RESTful que permiten la comunicación cliente-servidor basada en el estado y API Gateway también crea API WebSocket que se adhieren al protocolo WebSocket, que permite la comunicación dúplex completa y basada en el estado entre cliente y servidor.
+
+* API Gateway crea API RESTful que permiten la comunicación cliente-servidor sin estado y API Gateway también crea API WebSocket que se adhieren al protocolo WebSocket, que permite la comunicación sin estado y full-duplex entre cliente y servidor.
+
+* API Gateway crea API RESTful que permiten la comunicación cliente-servidor con estado y API Gateway también crea API WebSocket que se adhieren al protocolo WebSocket, que permite la comunicación sin estado y full-duplex entre cliente y servidor.
+
+Estas tres opciones contradicen los detalles anteriores proporcionados en la explicación. En resumen, API Gateway admite API RESTful sin estado y API WebSocket con estado. Por lo tanto, estas opciones son incorrectas.
+
+Referencia:
+
+https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html
+
+

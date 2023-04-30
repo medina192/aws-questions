@@ -1,0 +1,44 @@
+Una startup del sector sanitario necesita aplicar directrices de conformidad y normativas a los objetos 
+almacenados en Amazon S3. Uno de los requisitos clave es proporcionar una protección adecuada contra el
+ borrado accidental de objetos.
+
+Como arquitecto de soluciones, ¿cuáles son tus recomendaciones para abordar estas directrices? (Selecciona dos)
+
+
+
+
+
+Explicación
+Opciones correctas:
+
+Habilitar el versionado en el bucket - El versionado es un medio de mantener múltiples variantes de un objeto en el mismo bucket. Puedes utilizar el versionado para conservar, recuperar y restaurar cada versión de cada objeto almacenado en tu bucket de Amazon S3. Los buckets con versionado te permiten recuperar objetos en caso de borrado o sobrescritura accidental.
+
+Por ejemplo:
+
+Si sobrescribes un objeto, se produce una nueva versión del objeto en el bucket. Siempre puedes restaurar la versión anterior. Si eliminas un objeto, en lugar de eliminarlo permanentemente, Amazon S3 inserta un marcador de eliminación, que se convierte en la versión actual del objeto. Siempre puedes restaurar la versión anterior. Por tanto, esta es la opción correcta.
+
+Visión general de las versiones:
+IMG_ 14
+
+bilitar la eliminación MFA en el bucket - Para proporcionar protección adicional, se puede habilitar la eliminación con autenticación multifactor (MFA). La eliminación MFA requiere que se produzca una autenticación secundaria antes de que los objetos puedan eliminarse permanentemente de un bucket de Amazon S3. Por lo tanto, esta es la opción correcta.
+
+Opciones incorrectas:
+
+Crea un activador de evento al borrar cualquier objeto S3. El evento invoca una notificación SNS por correo electrónico al responsable de IT - Enviar un activador de evento tras la eliminación de un objeto no cumple el objetivo de evitar la eliminación de objetos por error, porque el objeto ya se ha eliminado. Por tanto, esta opción es incorrecta.
+
+Establecer un proceso para obtener la aprobación de la dirección para eliminar objetos S3 - Esta opción para obtener la aprobación de la dirección es sólo un distractor.
+
+Cambiar la configuración en la consola de AWS S3 para que el usuario tenga que dar una confirmación adicional al borrar cualquier objeto de S3 - No existe ninguna disposición para establecer la configuración de S3 para que pida una confirmación adicional antes de borrar un objeto. Esta opción es incorrecta.
+
+Referencias:
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMFADelete.html
+
+
+
+
+
+
+

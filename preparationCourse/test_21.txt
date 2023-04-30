@@ -1,0 +1,38 @@
+Una empresa utiliza instancias de Amazon EC2, API Gateway, Amazon RDS, Elastic Load Balancer y servicios
+ CloudFront. Para mejorar la seguridad de estos servicios, el grupo de asesoría de riesgos ha sugerido que
+  se compruebe la viabilidad de utilizar el servicio Amazon GuardDuty.
+
+¿Cuáles de las siguientes identificarías como fuentes de datos soportadas por GuardDuty?
+
+
+Explicación
+Opción correcta:
+
+* Logs de flujo de VPC, logs de DNS, eventos de CloudTrail - Amazon GuardDuty es un servicio de detección de amenazas que monitoriza continuamente la actividad maliciosa y el comportamiento no autorizado para proteger tus cuentas de AWS, cargas de trabajo y datos almacenados en Amazon S3. Con la nube, la recopilación y agregación de actividades de cuentas y redes se simplifica, pero a los equipos de seguridad puede llevarles mucho tiempo analizar continuamente los datos de registro de eventos en busca de amenazas potenciales. Con GuardDuty, ahora tienes una opción inteligente y rentable para la detección continua de amenazas en AWS. El servicio utiliza aprendizaje automático, detección de anomalías e inteligencia sobre amenazas integrada para identificar y priorizar las amenazas potenciales.
+
+GuardDuty analiza decenas de miles de millones de eventos en múltiples fuentes de datos de AWS, como eventos de AWS CloudTrail, registros de flujo de Amazon VPC y registros DNS.
+
+Con unos pocos clics en la consola de administración de AWS, GuardDuty puede activarse sin necesidad de implementar o mantener software o hardware. Al integrarse con Amazon EventBridge Events, las alertas de GuardDuty son procesables, fáciles de agregar a varias cuentas y sencillas de integrar en los sistemas existentes de gestión de eventos y flujos de trabajo.
+
+Cómo funciona GuardDuty: Cómo funciona GuardDuty vía - https://aws.amazon.com/guardduty/
+
+Opciones incorrectas:
+
+* Logs de flujo VPC, logs de puerta de enlace API, logs de acceso S3
+
+* Logs ELB, logs DNS, eventos CloudTrail
+
+* Logs de CloudFront, logs de API Gateway, eventos de CloudTrail.
+
+Estas tres opciones contradicen la explicación anterior, por lo que son incorrectas.
+
+Referencia:
+
+https://aws.amazon.com/guardduty/
+
+
+
+
+
+
+

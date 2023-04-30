@@ -1,0 +1,29 @@
+Una empresa de análisis de Big Data quiere establecer una arquitectura en la nube de AWS que limite las solicitudes en caso de picos repentinos de tráfico. La empresa está buscando servicios de AWS que puedan utilizarse para el almacenamiento en buffer el estrangulamiento a fin de gestionar dichas variaciones de tráfico.
+
+¿Cuál de los siguientes servicios puede utilizarse para cumplir este requisito?
+
+
+Explicación
+Opción correcta:
+
+El Throttling (limitación / estrangulamiento) es el proceso de limitar el número de solicitudes que un programa autorizado puede enviar a una operación determinada en un tiempo determinado.
+
+Amazon API Gateway, Amazon SQS y Amazon Kinesis - Para evitar que tu API se vea desbordada por demasiadas solicitudes, Amazon API Gateway regula las solicitudes a tu API mediante el algoritmo de token bucket, en el que un token cuenta para una solicitud. En concreto, API Gateway establece un límite en una tasa de estado estacionario y una ráfaga de envíos de solicitudes contra todas las API de tu cuenta. En el algoritmo del bucket de tokens, la ráfaga es el tamaño máximo del bucket.
+
+Amazon SQS - Amazon Simple Queue Service (SQS) es un servicio de colas de mensajes totalmente administrado que te permite desacoplar y escalar microservicios, sistemas distribuidos y aplicaciones sin servidor. Amazon SQS ofrece capacidades de buffer para suavizar los picos temporales de volumen sin perder mensajes ni aumentar la latencia.
+
+Amazon Kinesis - Amazon Kinesis es un servicio escalable y totalmente administrado que puede ingerir, almacenar en buffery procesar datos de streaming en tiempo real.
+
+Opciones incorrectas:
+
+Amazon SQS, Amazon SNS y AWS Lambda - Amazon SQS tiene la capacidad de almacenar en buffersus mensajes. Amazon Simple Notification Service (SNS) no puede almacenar mensajes en buffery, por lo general, se utiliza con SQS para proporcionar la función de almacenamiento en búfer. Cuando las solicitudes llegan más rápido de lo que tu función Lambda puede escalar, o cuando tu función está al máximo de concurrencia, las solicitudes adicionales fallan ya que Lambda las estrangula con el código de estado de error 429. Por tanto, esta combinación de servicios es incorrecta.
+
+Amazon Gateway Endpoints, Amazon SQS y Amazon Kinesis - Un Gateway Endpoint es una puerta de enlace que especificas como destino de una ruta en tu tabla de rutas para el tráfico destinado a un servicio de AWS compatible. Esto no puede ayudar en el estrangulamiento o almacenamiento en bufferde las solicitudes. Amazon SQS y Kinesis pueden almacenar en bufferlos datos entrantes. Dado que Gateway Endpoint es un servicio incorrecto para el estrangulamiento o el almacenamiento en búfer, esta opción es incorrecta.
+
+Elastic Load Balancer, Amazon SQS, AWS Lambda - Elastic Load Balancer no puede acelerar las solicitudes. Amazon SQS puede utilizarse para almacenar mensajes. Cuando las solicitudes llegan más rápido de lo que tu función Lambda puede escalar, o cuando tu función está al máximo de concurrencia, las solicitudes adicionales fallan ya que Lambda las estrangula con el código de estado de error 429. Por tanto, esta combinación de servicios es incorrecta.
+
+Referencias:
+
+https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html
+
+https://aws.amazon.com/sqs/features/

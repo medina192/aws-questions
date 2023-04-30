@@ -1,0 +1,26 @@
+Una empresa de servicios financieros utiliza Amazon GuardDuty para analizar los metadatos de sus cuentas de AWS con el fin de cumplir las directrices de conformidad. Sin embargo, la empresa ha decidido ahora dejar de utilizar el servicio GuardDuty. Todos los hallazgos existentes tienen que ser eliminados y no pueden persistir en ninguna parte de la nube de AWS.
+
+¿Cuál de las siguientes técnicas ayudará a la empresa a cumplir este requisito?
+
+Explicación
+Opción correcta:
+
+Amazon GuardDuty ofrece detección de amenazas que te permite monitorizar y proteger continuamente tus cuentas de AWS, cargas de trabajo y datos almacenados en Amazon S3. GuardDuty analiza flujos continuos de metadatos generados a partir de la actividad de tu cuenta y de la red que se encuentran en Eventos de AWS CloudTrail, Registros de Flujo de Amazon VPC y Registros DNS. También utiliza inteligencia sobre amenazas integrada, como direcciones IP maliciosas conocidas, detección de anomalías y aprendizaje automático, para identificar las amenazas con mayor precisión.
+
+Desactivar el servicio en la configuración general - Desactivar el servicio borrará todos los datos restantes, incluidos tus descubrimientos y configuraciones antes de renunciar a los permisos del servicio y restablecerlo. Por tanto, esta es la opción correcta para nuestro caso de uso.
+
+Opciones incorrectas:
+
+Suspender el servicio en la configuración general - Puedes hacer que Amazon GuardDuty deje de analizar tus fuentes de datos en cualquier momento eligiendo suspender el servicio en la configuración general. Esto detendrá inmediatamente el análisis de datos por parte del servicio, pero no elimina tus hallazgos o configuraciones existentes.
+
+Desregistrar el servicio en la pestaña de servicios - Se trata de una opción inventada, utilizada sólo como distractor.
+
+Lanza una solicitud de servicio a Amazon para eliminar completamente los datos de todas sus copias de seguridad - No es necesario crear una solicitud de servicio, ya que puedes eliminar los hallazgos existentes desactivando el servicio.
+
+Referencia:
+
+https://aws.amazon.com/guardduty/faqs/
+
+
+
+

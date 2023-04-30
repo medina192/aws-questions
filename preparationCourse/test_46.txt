@@ -1,0 +1,34 @@
+El equipo DevOps de una empresa de comercio electrónico quiere realizar algunas tareas de mantenimiento en una instancia EC2 específica que forma parte de un grupo de autoescalado mediante una política de escalado por pasos. El equipo se enfrenta a un reto de mantenimiento: cada vez que el equipo despliega un parche de mantenimiento, el estado de comprobación del estado de la instancia se muestra como fuera de servicio durante unos minutos. Esto provoca que el grupo de autoescalado aprovisione otra instancia de sustitución inmediatamente.
+
+Como arquitecto de soluciones, ¿cuáles son los pasos MÁS eficientes en cuanto a tiempo/recursos que recomendarías para que el trabajo de mantenimiento pueda completarse lo antes posible? (Selecciona dos)
+
+
+
+
+Explicación
+Opciones correctas:
+
+Pon la instancia en estado de Espera y luego actualízala aplicando el parche de mantenimiento. Una vez que la instancia esté lista, puedes salir del estado En espera y, a continuación, devolver la instancia al servicio - Puedes poner una instancia que esté en estado En servicio en el estado En espera, actualizar algún software o solucionar problemas de la instancia y, a continuación, devolver la instancia al servicio. Las instancias que están en espera siguen formando parte del grupo de autoescalado, pero no gestionan activamente el tráfico de aplicaciones.
+
+Cómo funciona el estado de espera:
+IMG 46
+
+vía - https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html
+
+Suspende el tipo de proceso ReemplazarInsalubre para el grupo de autoescalado y aplica el parche de mantenimiento a la instancia. Una vez que la instancia esté lista, puedes volver a establecer manualmente el estado de salud de la instancia en saludable y activar de nuevo el tipo de proceso ReplaceUnhealthy - El proceso ReplaceUnhealthy finaliza las instancias marcadas como no saludables y, a continuación, crea nuevas instancias para sustituirlas. Amazon EC2 Auto Scaling deja de reemplazar las instancias marcadas como no saludables. Las instancias que no superan las comprobaciones de estado de EC2 o Elastic Load Balancer (ELB) siguen marcadas como no saludables. En cuanto reanudes el proceso ReplaceUnhealthly, Amazon EC2 Auto Scaling sustituye las instancias que se marcaron como no saludables mientras este proceso estaba suspendido.
+
+Opciones incorrectas:
+
+Haz una instantánea (snapshot) de la instancia, crea una nueva AMI y luego lanza una nueva instancia utilizando esta AMI. Aplica el parche de mantenimiento a esta nueva instancia y luego añádela de nuevo al grupo de autoescalado utilizando la política de escalado manual. Finalizar la instancia anterior que tenía el problema de mantenimiento - Tomar la instantánea (snapshot) de la instancia existente para crear una nueva AMI y luego crear una nueva instancia para aplicar el parche de mantenimiento no es óptimo en cuanto a tiempo/recursos, por lo que esta opción queda descartada.
+
+Elimina el grupo de autoescalado y aplica el parche de mantenimiento a la instancia en cuestión. Crea un nuevo grupo de autoescalado y vuelve a añadir todas las instancias utilizando la política de escalado manual - No se recomienda eliminar el grupo de autoescalado sólo para aplicar un parche de mantenimiento en una instancia concreta.
+
+Suspende el tipo de proceso ScheduledActions para el grupo Auto Scaling y aplica el parche de mantenimiento a la instancia. Una vez que la instancia esté lista, puedes volver a establecer manualmente el estado de salud de la instancia en saludable y activar de nuevo el tipo de proceso ScheduledActions - Amazon EC2 Auto Scaling no ejecuta las acciones de escalado que están programadas para ejecutarse durante el periodo de suspensión. Esta opción no es relevante para este caso de uso.
+
+Referencias:
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html
+
+

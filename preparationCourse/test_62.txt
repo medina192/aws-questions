@@ -1,0 +1,31 @@
+La aplicación insignia de una empresa de juegos se conecta a una base de datos de Amazon Aurora y toda la pila tecnológica está desplegada actualmente en Estados Unidos. Ahora, la empresa tiene planes de ampliar sus operaciones a Europa y Asia. Necesita que la tabla games sea accesible globalmente, pero que las tablas users y games_played sean sólo regionales.
+
+¿Cómo implementarías esto con una refactorización mínima de la aplicación?
+
+
+
+
+Explicación
+Opción correcta:
+
+Utiliza una base de datos global de Amazon Aurora para la tabla games y utiliza Amazon Aurora para las tablas users y games_played.
+
+Amazon Aurora es una base de datos relacional compatible con MySQL y PostgreSQL creada para la nube, que combina el rendimiento y la disponibilidad de las bases de datos empresariales tradicionales con la sencillez y la rentabilidad de las bases de datos de código abierto. Amazon Aurora cuenta con un sistema de almacenamiento distribuido, tolerante a fallos y autorreparable que se autoescala hasta 128 TB por instancia de base de datos. Aurora no es una base de datos en memoria.
+
+La base de datos global de Amazon Aurora está diseñada para aplicaciones distribuidas globalmente, permitiendo que una única base de datos de Amazon Aurora abarque varias regiones de AWS. Replica tus datos sin afectar al rendimiento de la base de datos, permite lecturas locales rápidas con baja latencia en cada región y proporciona recuperación de desastres en caso de interrupciones en toda la región. La base de datos global de Amazon Aurora es la elección correcta para cada caso de uso.
+
+Por tanto, para el caso de uso dado, necesitamos tener dos clústeres Aurora, uno para la tabla global (tabla juegos) y otro para las tablas locales (tablas users y games_played).
+
+Opciones incorrectas:
+
+Utiliza una base de datos global de Amazon Aurora para la tabla games y utiliza tablas DynamoDB para las tablas users y games_played.
+
+Utiliza una tabla global DynamoDB para la tabla games y utiliza Amazon Aurora para las tablas users y games_played.
+
+Utiliza una tabla global de DynamoDB para la tabla "juegos" y utiliza tablas de DynamoDB para las tablas users y games_played
+
+En este caso, queremos una refactorización mínima de la aplicación. DynamoDB y Aurora tienen una API completamente diferente, ya que Aurora es SQL y DynamoDB es NoSQL. Por tanto, las tres opciones son incorrectas, ya que tienen a DynamoDB como uno de los componentes.
+
+Referencia:
+
+https://aws.amazon.com/rds/aurora/faqs/

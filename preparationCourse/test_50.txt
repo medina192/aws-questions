@@ -1,0 +1,26 @@
+Una organización quiere delegar el acceso a un conjunto de usuarios del entorno de desarrollo para que puedan acceder a algunos recursos del entorno de producción que se gestiona con otra cuenta de AWS.
+
+Como arquitecto de soluciones, ¿cuál de los siguientes pasos recomendarías?
+
+
+
+
+
+
+Opción correcta:
+
+Crea un nuevo rol IAM con los permisos necesarios para acceder a los recursos del entorno de producción. Los usuarios podrán asumir este rol IAM cuando accedan a los recursos desde el entorno de producción.
+
+Los roles de IAM te permiten delegar acceso a usuarios o servicios que normalmente no tienen acceso a los recursos de AWS de tu organización. Los usuarios de IAM o los servicios de AWS pueden asumir un rol para obtener credenciales de seguridad temporales que pueden utilizarse para hacer llamadas a la API de AWS. En consecuencia, no tienes que compartir credenciales a largo plazo para acceder a un recurso. Utilizando roles de IAM, es posible acceder a recursos de cuentas cruzadas.
+
+Opciones incorrectas:
+
+Crea nuevas credenciales de usuario IAM para el entorno de producción y comparte estas credenciales con el conjunto de usuarios del entorno de desarrollo - No es necesario crear nuevas credenciales de usuario IAM para el entorno de producción, ya que puedes utilizar los roles IAM para acceder a los recursos entre cuentas.
+
+No es posible acceder a recursos entre cuentas - Puedes utilizar roles IAM para acceder a recursos entre cuentas.
+
+Tanto los roles IAM como los usuarios IAM pueden utilizarse indistintamente para el acceso entre cuentas - Los roles IAM y los usuarios IAM son entidades IAM separadas y no deben mezclarse. Sólo los roles IAM pueden utilizarse para acceder a recursos entre cuentas.
+
+Referencia:
+
+https://aws.amazon.com/iam/features/manage-roles/

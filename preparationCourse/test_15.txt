@@ -1,0 +1,43 @@
+CloudFront ofrece una caché de varios niveles en forma de cachés de borde regionales que mejoran la latencia.
+ Sin embargo, hay ciertos tipos de contenido que eluden la caché de borde regional y van directamente al 
+ origen.
+
+¿Cuál de los siguientes tipos de contenido omite la caché de borde regional? (Selecciona dos)
+
+
+Opciones correctas:
+
+Contenido dinámico, determinado en el momento de la solicitud (comportamiento de caché configurado para reenviar todas las cabeceras).
+
+Amazon CloudFront es un servicio rápido de red de entrega de contenidos (CDN) que entrega de forma segura datos, vídeos, aplicaciones y API a clientes de todo el mundo con baja latencia y altas velocidades de transferencia, todo ello en un entorno fácil de usar para los desarrolladores.
+
+Los puntos de presencia (POP) de CloudFront (ubicaciones de borde) garantizan que los contenidos populares puedan servirse rápidamente a tus espectadores. CloudFront también tiene cachés de borde regionales que acercan más tu contenido a tus espectadores, incluso cuando el contenido no es lo suficientemente popular como para permanecer en un POP, para ayudar a mejorar el rendimiento de ese contenido.
+
+El contenido dinámico, tal y como se determina en el momento de la solicitud (comportamiento de caché configurado para reenviar todas las cabeceras), no fluye a través de las cachés de borde regionales, sino que va directamente al origen. Por tanto, esta opción es correcta.
+
+Los métodos proxy PUT/POST/PATCH/OPTIONS/DELETE van directamente al origen
+
+Los métodos proxy PUT/POST/PATCH/OPTIONS/DELETE van directamente al origen desde los POP y no hacen proxy a través de las cachés de borde regionales. Por tanto, esta opción también es correcta.
+
+Cómo CloudFront entrega contenido:
+IMG 15 
+
+
+vía - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html
+
+Opciones incorrectas:
+
+Activos de comercio electrónico, como fotos de productos
+
+Vídeos generados por usuarios
+
+Contenido estático como hojas de estilo, archivos JavaScript
+
+El siguiente tipo de contenido fluye a través de las cachés de los bordes regionales: contenido generado por el usuario, como vídeos, fotos o material gráfico; activos de comercio electrónico, como fotos y vídeos de productos, y contenido estático, como hojas de estilo o archivos JavaScript. Por tanto, estas tres opciones no son correctas.
+
+Referencia:
+
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html
+
+
+

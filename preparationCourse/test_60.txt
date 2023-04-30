@@ -1,0 +1,42 @@
+El equipo de ingeniería de una empresa de comercio electrónico quiere establecer una conexión dedicada, cifrada, de baja latencia y alto rendimiento entre su centro de datos y la nube de AWS. El equipo de ingeniería ha reservado tiempo suficiente para tener en cuenta la sobrecarga operativa de establecer esta conexión.
+
+Como arquitecto de soluciones, ¿cuál de las siguientes soluciones recomendarías a la empresa?
+
+
+
+
+
+
+
+
+
+Explicación
+Opción correcta:
+
+Utiliza AWS Direct Connect más VPN para establecer una conexión entre el centro de datos y la nube de AWS
+
+AWS Direct Connect es una solución de servicio en la nube que facilita el establecimiento de una conexión de red dedicada desde tus instalaciones a AWS. AWS Direct Connect te permite establecer una conexión de red dedicada entre tu red y una de las ubicaciones de AWS Direct Connect.
+
+Con AWS Direct Connect más VPN, puedes combinar una o varias conexiones de red dedicadas de AWS Direct Connect con la VPN de Amazon VPC. Esta combinación proporciona una conexión privada cifrada con IPsec que también reduce los costes de red, aumenta el rendimiento del ancho de banda y ofrece una experiencia de red más consistente que las conexiones VPN basadas en Internet.
+
+Esta solución combina los beneficios gestionados por AWS de la solución VPN con la baja latencia, el mayor ancho de banda, los beneficios más consistentes de la solución AWS Direct Connect y una conexión IPsec segura de extremo a extremo. Por tanto, AWS Direct Connect más VPN es la solución correcta para este caso de uso.
+
+AWS Direct Connect Plus VPN:
+IMG 60
+
+
+vía - https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect-vpn.html
+
+Opciones incorrectas:
+
+Utiliza la VPN de sitio a sitio para establecer una conexión entre el centro de datos y la nube de AWS - La VPN de sitio a sitio de AWS te permite conectar de forma segura tu red local o el sitio de tu sucursal a tu Amazon Virtual Private Cloud (Amazon VPC). Una Conexión VPN VPC utiliza IPSec para establecer una conectividad de red cifrada entre tu intranet y Amazon VPC a través de Internet. Las Conexiones VPN son una buena solución si tienes una necesidad inmediata, tus requisitos de ancho de banda son de bajos a modestos y puedes tolerar la variabilidad inherente a la conectividad basada en Internet. Sin embargo, la VPN de sitio a sitio no puede proporcionar una conexión de baja latencia y alto rendimiento, por lo que esta opción queda descartada.
+
+Utiliza la puerta de enlace de tránsito de la VPC para establecer una conexión entre el centro de datos y la nube de AWS - Una puerta de enlace de tránsito es un centro de tránsito de red que puedes utilizar para interconectar tus nubes privadas virtuales (VPC) y las redes locales. Una puerta de enlace de tránsito por sí misma no puede establecer una conexión de baja latencia y alto rendimiento entre un centro de datos y la nube de AWS. Por tanto, esta opción es incorrecta.
+
+Utilizar AWS Direct Connect para establecer una conexión entre el centro de datos y AWS Cloud - AWS Direct Connect por sí mismo no puede proporcionar una conexión cifrada entre un centro de datos y AWS Cloud, por lo que esta opción queda descartada.
+
+Referencias:
+
+https://aws.amazon.com/directconnect/
+
+https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect-plus-vpn-network-to-amazon.html

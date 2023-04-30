@@ -1,0 +1,36 @@
+Una empresa de medios de comunicación ejecuta una aplicación web para compartir fotos a la que se accede desde tres países diferentes. La aplicación está desplegada en varias instancias de Amazon EC2 que se ejecutan detrás de un Application Load Balancer. Con las nuevas normativas gubernamentales, se ha pedido a la empresa que bloquee el acceso desde dos países y permita el acceso sólo desde el país de origen de la empresa.
+
+¿Qué configuración debe utilizarse para cumplir este requisito modificado?
+
+
+
+
+
+Explicación
+Opción correcta:
+
+AWS WAF es un servicio de firewall de aplicaciones web que te permite monitorizar las solicitudes web y proteger tus aplicaciones web de solicitudes maliciosas. Utiliza AWS WAF para bloquear o permitir solicitudes en función de las condiciones que especifiques, como las direcciones IP. También puedes utilizar las protecciones preconfiguradas de AWS WAF para bloquear ataques comunes como la inyección SQL o el cross-site scripting.
+
+Configurar AWS WAF en el Application Load Balancer en una VPC
+
+Puedes utilizar AWS WAF con tu Application Load Balancer para permitir o bloquear solicitudes en función de las reglas de una lista de control de acceso web (ACL web). Las condiciones de coincidencia geográfica (Geo) en AWS WAF te permiten utilizar AWS WAF para restringir el acceso a las aplicaciones en función de la ubicación geográfica de tus espectadores. Con las condiciones de coincidencia geográfica puedes elegir los países desde los que AWS WAF debe permitir el acceso.
+
+Las condiciones de coincidencia geográfica son importantes para muchos clientes. Por ejemplo, los requisitos legales y de licencia restringen a algunos clientes la entrega de sus aplicaciones fuera de determinados países. Estos clientes pueden configurar una lista blanca que sólo permita espectadores en esos países. Otros clientes necesitan impedir la descarga de su software encriptado a usuarios de determinados países. Estos clientes pueden configurar una lista negra para que los usuarios finales de esos países no puedan descargar su software.
+
+Opciones incorrectas:
+
+Utiliza la función de restricción geográfica de Amazon CloudFront en una VPC - La función de restricción geográfica de CloudFront ayuda a restringir el tráfico en función de la ubicación geográfica del usuario. Pero CloudFront funciona desde ubicaciones periféricas y no pertenece a una VPC. Por lo tanto, esta opción es incorrecta y se da sólo como distractor.
+
+Configura el grupo de seguridad en el Application Load Balancer
+
+Configura el grupo de seguridad para las instancias EC2
+
+Los grupos de seguridad no pueden restringir el acceso en función de la ubicación geográfica del usuario.
+
+Referencias:
+
+https://aws.amazon.com/about-aws/whats-new/2017/10/aws-waf-now-supports-geographic-match/
+
+https://aws.amazon.com/blogs/aws/aws-web-application-firewall-waf-for-application-load-balancers/
+
+https://aws.amazon.com/about-aws/whats-new/2016/12/AWS-WAF-now-available-on-Application-Load-Balancer/

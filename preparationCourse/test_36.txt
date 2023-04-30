@@ -1,0 +1,44 @@
+El equipo de ingeniería de una empresa de análisis de datos ha observado que su aplicación estrella funciona a su máximo rendimiento cuando las instancias EC2 subyacentes tienen una utilización de CPU de alrededor del 50%. La aplicación está construida sobre una flota de instancias EC2 gestionadas bajo un grupo de autoescalado. Las solicitudes de flujo de trabajo son gestionadas por un Application Load Balancer interno que enruta las solicitudes a las instancias.
+
+Como arquitecto de soluciones, ¿qué recomendarías para que la aplicación funcione cerca de su estado de máximo rendimiento?
+
+
+Opción correcta:
+
+Configura el grupo de autoescalado para utilizar la política de seguimiento de objetivos y establece la utilización de la CPU como métrica objetivo con un valor objetivo del 50%.
+
+Un grupo de Auto Scaling contiene una colección de instancias de Amazon EC2 que se tratan como una agrupación lógica a efectos de escalado y administración automáticos. Un grupo de autoescalado también te permite utilizar las características de Autoescalado de Amazon EC2, como los reemplazos de comprobación de estado y las políticas de escalado.
+
+Con las políticas de escalado de seguimiento de objetivos, seleccionas una métrica de escalado y estableces un valor objetivo. Amazon EC2 Auto Scaling crea y administra las alarmas de CloudWatch que activan la política de escalado y calcula el ajuste de escalado en función de la métrica y el valor objetivo. La política de escalado añade o elimina capacidad según sea necesario para mantener la métrica en el valor objetivo especificado o cerca de él.
+
+Por ejemplo, puedes utilizar la escala de seguimiento de objetivos para:
+
+Configura una política de escalado de seguimiento de objetivos para mantener la utilización media agregada de CPU de tu grupo de autoescalado en el 50 por ciento. Esto cumple los requisitos especificados en el caso de uso dado y, por tanto, es la opción correcta.
+
+Visión general de la política de seguimiento de objetivos:
+IMG 36
+
+
+vía - https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html
+
+Opciones incorrectas:
+
+Configura el grupo de autoescalado para utilizar la política de escalado por pasos y establece la utilización de la CPU como métrica objetivo con un valor objetivo del 50%.
+
+Configura el grupo de autoescalado para utilizar la política de escalado simple y establece la utilización de la CPU como métrica objetivo con un valor objetivo del 50%.
+
+Con el escalado por pasos y el escalado simple, eliges métricas de escalado y valores umbral para las alarmas de CloudWatch que activan el proceso de escalado. Ni el escalado por pasos ni el escalado simple pueden configurarse para utilizar una métrica objetivo para la utilización de la CPU, por lo que ambas opciones son incorrectas.
+
+Configurar el grupo de autoescalado para que utilice una alarma de Cloudwatch activada por un umbral de utilización de la CPU del 50% - Un grupo de autoescalado no puede utilizar directamente una alarma de Cloudwatch como fuente de un evento de ampliación o reducción, por lo que esta opción es incorrecta.
+
+Referencias:
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html
+
+
+
+

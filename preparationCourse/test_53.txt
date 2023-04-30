@@ -1,0 +1,34 @@
+Una consultoría de seguridad informática está trabajando en una solución para proteger los datos almacenados en S3 de cualquier actividad maliciosa, así como para comprobar si existen vulnerabilidades en las instancias EC2.
+
+Como arquitecto de soluciones, ¿cuál de las siguientes soluciones sugerirías para ayudar a abordar el requisito dado?
+
+
+Explicación
+Opción correcta:
+
+Utiliza Amazon GuardDuty para monitorizar cualquier actividad maliciosa en los datos almacenados en S3. Utiliza las evaluaciones de seguridad proporcionadas por Amazon Inspector para comprobar si existen vulnerabilidades en las instancias EC2.
+
+Amazon GuardDuty ofrece detección de amenazas que te permite monitorizar y proteger continuamente tus cuentas de AWS, cargas de trabajo y datos almacenados en Amazon S3. GuardDuty analiza flujos continuos de metadatos generados a partir de la actividad de tu cuenta y de la red que se encuentran en Eventos de AWS CloudTrail, Registros de Flujo de Amazon VPC y Registros DNS. También utiliza inteligencia sobre amenazas integrada, como direcciones IP maliciosas conocidas, detección de anomalías y aprendizaje automático, para identificar las amenazas con mayor precisión.
+
+Cómo funciona GuardDuty:
+IMG 53
+
+vía - https://aws.amazon.com/guardduty/
+
+Las evaluaciones de seguridad de Amazon Inspector te ayudan a comprobar la accesibilidad no intencionada a la red de tus instancias de Amazon EC2 y las vulnerabilidades de esas instancias EC2. Las evaluaciones de Amazon Inspector se te ofrecen como paquetes de reglas predefinidas asignadas a las mejores prácticas comunes de seguridad y a las definiciones de vulnerabilidades.
+
+Opciones incorrectas:
+
+Utiliza Amazon GuardDuty para monitorizar cualquier actividad maliciosa en los datos almacenados en S3. Utiliza las evaluaciones de seguridad proporcionadas por Amazon GuardDuty para comprobar si existen vulnerabilidades en las instancias EC2.
+
+Utiliza Amazon Inspector para monitorizar cualquier actividad maliciosa en los datos almacenados en S3. Utiliza las evaluaciones de seguridad proporcionadas por Amazon Inspector para comprobar si existen vulnerabilidades en las instancias EC2.
+
+Utiliza Amazon Inspector para monitorizar cualquier actividad maliciosa en los datos almacenados en S3. Utiliza las evaluaciones de seguridad proporcionadas por Amazon GuardDuty para comprobar si existen vulnerabilidades en las instancias EC2.
+
+Estas tres opciones contradicen la explicación anterior, por lo que son incorrectas.
+
+Referencias:
+
+https://aws.amazon.com/guardduty/
+
+https://aws.amazon.com/inspector/

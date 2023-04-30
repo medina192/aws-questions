@@ -1,0 +1,32 @@
+Una agencia de investigación geológica mantiene los datos sismológicos de los últimos 100 años. Los datos tienen una velocidad de 1 GB por minuto. Le gustaría almacenar los datos sólo con los atributos más relevantes para construir un modelo predictivo de terremotos.
+
+¿Qué servicios de AWS utilizarías para crear la solución más rentable con el MENOR mantenimiento de la infraestructura?
+
+
+
+Explicación
+Opción correcta:
+
+* Ingerir los datos en Kinesis Data Firehose y utiliza una función Lambda intermedia para filtrar y transformar el flujo entrante antes de volcar la salida en S3.
+
+Amazon Kinesis Data Firehose es la forma más sencilla de cargar datos de streaming en almacenes de datos y herramientas de análisis. Puede capturar, transformar y cargar datos de streaming en Amazon S3, Amazon Redshift, Amazon Elasticsearch Service y Splunk, lo que permite realizar análisis casi en tiempo real con las herramientas de inteligencia empresarial y los paneles de control que ya utilizas. Es un servicio totalmente gestionado que se escala automáticamente para adaptarse al rendimiento de tus datos y no requiere administración continua. También puede procesar por lotes, comprimir y cifrar los datos antes de cargarlos, minimizando la cantidad de almacenamiento utilizado en el destino y aumentando la seguridad.
+
+Visión general de Kinesis Data Firehose Visión general de Kinesis Data Firehose vía - https://aws.amazon.com/kinesis/data-firehose/
+
+La opción correcta es ingerir los datos en Kinesis Data Firehose y utilizar una función Lambda para filtrar y transformar los datos entrantes antes de volcar la salida en S3. De este modo, sólo necesitarás almacenar una versión troceada de los datos con únicamente los atributos de datos relevantes necesarios para tu modelo. También hay que tener en cuenta que esta solución es totalmente sin servidor y no requiere mantenimiento de la infraestructura.
+
+Kinesis Data Firehose a S3: Kinesis Data Firehose a S3 vía - https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html
+
+Opciones incorrectas:
+
+* Analiza los datos en Kinesis Data Analytics y utiliza consultas SQL para filtrar y transformar los datos antes de escribirlos en S3 - Amazon Kinesis Data Analytics es la forma más sencilla de analizar datos de streaming en tiempo real. Kinesis Data Analytics te permite crear fácil y rápidamente consultas y sofisticadas aplicaciones de streaming en tres sencillos pasos: configura tus fuentes de datos de streaming, escribe tus consultas o aplicaciones de streaming y configura tu destino para los datos procesados. Kinesis Data Analytics no puede ingerir datos directamente desde la fuente, ya que los ingesta desde Kinesis Data Streams o Kinesis Data Firehose, por lo que esta opción queda descartada.
+
+* Ingiere los datos en Kinesis Data Streams y utiliza una función Lambda intermedia para filtrar y transformar el flujo entrante antes de volcar la salida en S3 - Amazon Kinesis Data Streams (KDS) es un servicio de ingestión y procesamiento de datos masivamente escalable y altamente duradero, optimizado para el streaming de datos. Amazon Kinesis Data Streams está integrado con varios servicios de AWS, incluido Amazon Kinesis Data Firehose para una transformación casi en tiempo real.
+
+Kinesis Data Streams no puede escribir directamente la salida en S3. A diferencia de Firehose, KDS no ofrece una integración lista a través de una función Lambda intermediaria para volcar datos de forma fiable en S3. Tendrás que hacer mucha codificación personalizada para que la función Lambda procese el flujo entrante y luego almacene la salida transformada en S3 con la restricción de que el bufferse mantenga de forma fiable y no se pierdan datos transformados. Por tanto, esta opción es incorrecta.
+
+* Ingesta los datos en un clúster de Spark Streaming en EMR utiliza transformaciones de Spark Streaming antes de escribir en S3 - Amazon EMR es la plataforma de big data en la nube líder del sector para procesar grandes cantidades de datos utilizando herramientas de código abierto como Apache Spark, Apache Hive, Apache HBase, Apache Flink, Apache Hudi y Presto. Amazon EMR utiliza Hadoop, un marco de trabajo de código abierto, para distribuir tus datos y procesarlos en un clúster redimensionable de instancias de Amazon EC2. Utilizar un clúster EMR implicaría gestionar la infraestructura subyacente, por lo que se descarta porque la solución correcta para el caso de uso dado debería requerir la menor cantidad de mantenimiento de la infraestructura.
+
+Referencia:
+
+https://aws.amazon.com/kinesis/data-firehose/

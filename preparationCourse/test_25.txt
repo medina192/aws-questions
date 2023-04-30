@@ -1,0 +1,37 @@
+Pregunta 24: Omitido
+Una gran institución financiera opera un centro de datos local con cientos de PB de datos gestionados en el Sistema de Archivos Distribuidos (DFS) de Microsoft. El director de tecnología quiere que la organización realice la transición a un entorno de nube híbrida y ejecute cargas de trabajo de análisis intensivo de datos compatibles con DFS.
+
+¿Cuál de los siguientes servicios de AWS puede facilitar la migración de estas cargas de trabajo?
+
+Explicación
+Opción correcta:
+
+* Amazon FSx para Windows File Server
+
+Amazon FSx para Windows File Server proporciona un almacenamiento de archivos totalmente gestionado y altamente fiable, accesible a través del protocolo estándar del sector Service Message Block (SMB). Está basado en Windows Server y ofrece una amplia gama de características administrativas, como cuotas de usuario, restauración de archivos de usuario final e integración con Microsoft Active Directory (AD). Amazon FSx admite el uso del Sistema de Archivos Distribuidos (DFS) de Microsoft para organizar los recursos compartidos en una única estructura de carpetas de hasta cientos de PB de tamaño. Por tanto, esta opción es correcta.
+
+Cómo funciona FSx para Windows File Server:
+IMG 25
+
+
+vía - https://aws.amazon.com/fsx/windows/
+
+Opciones incorrectas:
+
+* Amazon FSx para Lustre
+
+Amazon FSx para Lustre facilita y rentabiliza el lanzamiento y la ejecución del sistema de archivos de alto rendimiento más popular del mundo. Se utiliza para cargas de trabajo como aprendizaje automático, informática de alto rendimiento (HPC), procesamiento de vídeo y modelado financiero. Amazon FSx te permite utilizar sistemas de archivos Lustre para cualquier carga de trabajo en la que la velocidad de almacenamiento sea importante. FSx para Lustre no es compatible con el Sistema de Archivos Distribuidos (DFS) de Microsoft, por lo que esta opción es incorrecta.
+
+* AWS Gestionado Microsoft AD
+
+AWS Directory Service para Microsoft Active Directory, también conocido como AWS Managed Microsoft AD, permite que tus cargas de trabajo compatibles con directorios y recursos de AWS utilicen Active Directory administrado en la nube de AWS. AWS Managed Microsoft AD se basa en el Microsoft Active Directory real y no requiere que sincronices o repliques datos de tu Active Directory existente a la nube. AWS Managed Microsoft AD no es compatible con el Sistema de Archivos Distribuidos (DFS) de Microsoft, por lo que esta opción es incorrecta.
+
+* Microsoft SQL Server en Amazon
+
+Microsoft SQL Server en AWS te ofrece la flexibilidad de ejecutar la base de datos Microsoft SQL Server en la nube de AWS. Microsoft SQL Server en AWS no es compatible con el Sistema de Archivos Distribuidos (DFS) de Microsoft, por lo que esta opción es incorrecta.
+
+Referencia:
+
+https://aws.amazon.com/fsx/windows/
+
+

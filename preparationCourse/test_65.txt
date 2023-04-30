@@ -1,0 +1,29 @@
+Una aplicación de Automatización del Diseño Electrónico (EDA) produce volúmenes masivos de datos que pueden dividirse en dos categorías. Los 'datos calientes' necesitan ser procesados y almacenados rápidamente de forma paralela y distribuida. Los 'datos fríos' deben conservarse como referencia con acceso rápido para lecturas y actualizaciones a bajo coste.
+
+¿Cuál de los siguientes servicios de AWS es el MÁS adecuado para acelerar el mencionado proceso de diseño de chips?
+
+
+
+
+Explicación
+Opción correcta:
+
+Amazon FSx para Lustre
+
+Amazon FSx para Lustre facilita y rentabiliza el lanzamiento y la ejecución del sistema de archivos de alto rendimiento más popular del mundo. Se utiliza para cargas de trabajo como el aprendizaje automático, la informática de alto rendimiento (HPC), el procesamiento de vídeo y el modelado financiero. El sistema de archivos de código abierto Lustre está diseñado para aplicaciones que requieren un almacenamiento rápido, en las que quieres que tu almacenamiento siga el ritmo de tu computación. FSx para Lustre se integra con Amazon S3, facilitando el procesamiento de conjuntos de datos con el sistema de archivos Lustre. Cuando se vincula a un bucket S3, un sistema de archivos FSx para Lustre presenta de forma transparente los objetos S3 como archivos y te permite volver a escribir en S3 los datos modificados.
+
+FSx para Lustre ofrece la posibilidad tanto de procesar los "datos calientes" de forma paralela y distribuida como de almacenar fácilmente los "datos fríos" en Amazon S3. Por lo tanto, esta opción es la que MEJOR se adapta al planteamiento del problema.
+
+Opciones incorrectas:
+
+Amazon FSx para Windows File Server - Amazon FSx para Windows File Server proporciona almacenamiento de archivos totalmente gestionado y altamente fiable, accesible a través del protocolo estándar del sector Service Message Block (SMB). Está basado en Windows Server y ofrece una amplia gama de funciones administrativas, como cuotas de usuario, restauración de archivos de usuario final e integración con Microsoft Active Directory (AD). FSx para Windows no te permite presentar objetos S3 como archivos y no te permite volver a escribir en S3 los datos modificados. Por tanto, no puedes hacer referencia a los "datos fríos" con acceso rápido para lecturas y actualizaciones a bajo coste. De ahí que esta opción no sea correcta.
+
+Amazon EMR - Amazon EMR es la plataforma de big data en la nube líder del sector para procesar grandes cantidades de datos utilizando herramientas de código abierto como Apache Spark, Apache Hive, Apache HBase, Apache Flink, Apache Hudi y Presto. Amazon EMR utiliza Hadoop, un marco de trabajo de código abierto, para distribuir tus datos y procesarlos en un clúster redimensionable de instancias de Amazon EC2. EMR no ofrece la misma velocidad de almacenamiento y procesamiento que FSx para Lustre. Por lo tanto, no es el más adecuado para el escenario de flujo de trabajo de alto rendimiento que nos ocupa.
+
+AWS Glue - AWS Glue es un servicio de extracción, transformación y carga (ETL) totalmente administrado que facilita a los clientes la preparación y carga de sus datos para análisis. El trabajo de AWS Glue está pensado para ser utilizado en el procesamiento de datos ETL por lotes. AWS Glue no ofrece la misma velocidad de almacenamiento y procesamiento que FSx para Lustre. Por tanto, no es la opción adecuada para el escenario de flujo de trabajo de alto rendimiento que nos ocupa.
+
+Referencias:
+
+https://aws.amazon.com/fsx/lustre/
+
+https://aws.amazon.com/fsx/windows/faqs/

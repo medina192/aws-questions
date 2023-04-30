@@ -1,0 +1,36 @@
+Una empresa sanitaria utiliza su infraestructura local para ejecutar aplicaciones heredadas que requieren personalizaciones especializadas en la base de datos Oracle subyacente, así como en su sistema operativo (SO) host. La empresa también quiere mejorar la disponibilidad de la capa de base de datos Oracle. La empresa te ha contratado como Solutions Architect (Arquitecto de soluciones) para crear una solución en AWS que cumpla estos requisitos y, al mismo tiempo, minimice el esfuerzo de mantenimiento de la infraestructura subyacente.
+
+¿Cuál de las siguientes opciones representa la mejor solución para este caso de uso?
+
+
+Opción correcta:
+
+Aprovecha la configuración multi-AZ de Amazon RDS Custom (Personalizado) para Oracle que permite a los administradores de la base de datos acceder y personalizar el entorno de la base de datos y el sistema operativo subyacente
+
+Amazon RDS es un servicio administrado que facilita la configuración, el funcionamiento y el escalado de una base de datos relacional en la nube. Proporciona una capacidad rentable y redimensionable, al tiempo que gestiona las tareas de administración de bases de datos que tanto tiempo consumen. Amazon RDS puede realizar copias de seguridad automáticas de tu base de datos y mantener el software de tu base de datos actualizado con la última versión. Sin embargo, RDS no te permite acceder al SO anfitrión de la base de datos.
+
+Para el caso de uso dado, necesitas utilizar RDS Custom para Oracle, ya que te permite acceder y personalizar el host y el sistema operativo de tu servidor de base de datos, por ejemplo aplicando parches especiales y cambiando la configuración del software de base de datos para admitir aplicaciones de terceros que requieran acceso privilegiado. RDS Personalizado para Oracle facilita estas funcionalidades con un esfuerzo mínimo de mantenimiento de la infraestructura. Necesitas configurar el RDS Personalizado para Oracle en configuración multi-AZ para alta disponibilidad.
+
+Amazon RDS Custom (Personalizado) para Oracle:
+IMG 35
+
+
+vía - https://aws.amazon.com/blogs/aws/amazon-rds-custom-for-oracle-new-control-capabilities-in-database-environment/
+
+Opciones incorrectas:
+
+Aprovecha la configuración multi-AZ de RDS para Oracle que permite a los administradores de la base de datos acceder y personalizar el entorno de la base de datos y el sistema operativo subyacente
+
+Aprovecha la configuración de réplica de lectura AZ cruzada de RDS para Oracle que permite a los administradores de bases de datos acceder y personalizar el entorno de la base de datos y el sistema operativo subyacente
+
+RDS para Oracle no te permite acceder y personalizar el host y el sistema operativo de tu servidor de base de datos. Por lo tanto, estas dos opciones son incorrectas.
+
+Despliega la capa de base de datos Oracle en varias instancias EC2 repartidas en dos zonas de disponibilidad (AZ). Esta configuración de despliegue garantiza una alta disponibilidad y también permite a los administradores de la base de datos acceder y personalizar el entorno de la base de datos y el sistema operativo subyacente - El caso de uso requiere que la mejor solución implique un esfuerzo mínimo de mantenimiento de la infraestructura. Si utilizas instancias EC2 para alojar las bases de datos, tendrás que gestionar tú mismo el estado del servidor, su mantenimiento, la aplicación de parches y las tareas de mantenimiento de la base de datos. Además, también tendrás que gestionar la configuración multi-AZ desplegando instancias EC2 en dos zonas de disponibilidad (AZ), quizás utilizando un grupo de autoescalado. Estos pasos suponen un importante esfuerzo de mantenimiento. Por tanto, esta opción es incorrecta.
+
+Referencias:
+
+https://aws.amazon.com/blogs/aws/amazon-rds-custom-for-oracle-new-control-capabilities-in-database-environment/
+
+https://aws.amazon.com/rds/faqs/
+
+

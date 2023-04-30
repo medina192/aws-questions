@@ -1,0 +1,54 @@
+Una empresa está en proceso de migrar sus recursos compartidos de archivos SMB locales a AWS para que la
+ empresa pueda desentenderse de la gestión de múltiples servidores de archivos en docenas de oficinas. La
+  empresa tiene 200 TB de datos en sus servidores de archivos. Las aplicaciones locales existentes y las
+   cargas de trabajo nativas de Windows deberían seguir teniendo acceso de baja latencia a estos datos sin
+    interrupciones tras la migración. La empresa también quiere que cualquier nueva aplicación desplegada 
+    en AWS tenga acceso a estos datos migrados.
+
+¿Cuál de las siguientes es la mejor solución para cumplir este requisito?
+
+
+Explicación
+Opción correcta:
+
+* Utiliza Amazon FSx File Gateway para proporcionar acceso local de baja latencia a recursos compartidos de archivos totalmente administrados en Amazon FSx para Windows File Server. Las aplicaciones desplegadas en AWS pueden acceder a estos datos directamente desde Amazon FSx en AWS.
+
+Para recursos compartidos de archivos de usuarios o equipos, y migraciones de aplicaciones basadas en archivos, Amazon FSx File Gateway proporciona acceso local de baja latencia a recursos compartidos de archivos totalmente administrados en Amazon FSx para Windows File Server. Para aplicaciones desplegadas en AWS, puedes acceder a tus recursos compartidos de archivos directamente desde Amazon FSx en AWS.
+
+Para tus cargas de trabajo y usuarios nativos de Windows, o tus clientes SMB, Amazon FSx para Servidor de Archivos de Windows proporciona todas las ventajas de un entorno SMB nativo de Windows totalmente administrado y protegido, y escalado como cualquier otro servicio de AWS. Obtendrás informes detallados, replicación, backup, conmutación por error y soporte para herramientas nativas de Windows como DFS y Active Directory.
+
+Amazon FSx File Gateway:
+IMG ----------------- 12
+
+vía - https://aws.amazon.com/storagegateway/file/
+
+Opciones incorrectas:
+
+* Utiliza File Gateway de Amazon Storage Gateway para proporcionar acceso local de baja latencia a recursos compartidos de archivos totalmente administrados en Amazon FSx para Windows File Server. Las aplicaciones desplegadas en AWS pueden acceder a estos datos directamente desde Amazon FSx en AWS - Cuando necesites acceder a S3 utilizando un protocolo de sistema de archivos, debes utilizar File Gateway. Obtendrás una caché local en la puerta de enlace que proporciona un alto rendimiento y una baja latencia sobre SMB.
+
+La puerta de enlace de archivos (File Gateway) de Amazon Storage Gateway no admite archivos compartidos para cargas de trabajo nativas de Windows, por lo que esta opción es incorrecta.
+
+File Gateway de Amazon Storage Gateway:
+IMG --------------------- 12_2
+
+
+* Utiliza File Gateway de Amazon Storage Gateway para proporcionar acceso local de baja latencia a recursos compartidos de archivos totalmente administrados en Amazon S3. Las aplicaciones desplegadas en AWS pueden acceder a estos datos directamente desde Amazon S3 - - Cuando necesites acceder a S3 utilizando un protocolo de sistema de archivos, debes utilizar File Gateway. Obtienes una caché local en la puerta de enlace que proporciona un alto rendimiento y baja latencia sobre SMB.
+
+El caso de uso dado requiere soporte nativo de Windows para las aplicaciones. File Gateway sólo puede utilizarse para acceder a objetos S3 utilizando un protocolo de sistema de archivos, por lo que esta opción es incorrecta.
+
+* Utiliza Amazon FSx File Gateway para proporcionar acceso local de baja latencia a recursos compartidos de archivos totalmente administrados en Amazon EFS. Las aplicaciones desplegadas en AWS pueden acceder a estos datos directamente desde Amazon EFS - Amazon FSx File Gateway proporciona acceso a recursos compartidos de archivos totalmente administrados en Amazon FSx para Windows File Server y no es compatible con EFS. También debes tener en cuenta que EFS utiliza el protocolo Network File System versión 4 (NFS v4) y no es compatible con el protocolo SMB. Por lo tanto, esta opción es incorrecta para el caso de uso dado.
+
+Referencias:
+
+https://aws.amazon.com/storagegateway/file/fsx/
+
+https://aws.amazon.com/storagegateway/faqs/
+
+https://aws.amazon.com/blogs/storage/aws-reinvent-recap-choosing-storage-for-on-premises-file-based-workloads/
+
+
+
+
+
+
+

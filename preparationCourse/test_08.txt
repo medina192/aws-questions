@@ -1,0 +1,32 @@
+Una empresa de juegos está desarrollando un juego para móviles que transmite actualizaciones de puntuación
+ a un procesador backend y luego publica los resultados en una tabla de clasificación. La empresa te ha
+  contratado como arquitecto de soluciones certificado por AWS para que diseñes una solución que pueda
+   gestionar picos de tráfico importantes, procesar las actualizaciones del juego móvil en el orden de 
+   recepción y almacenar las actualizaciones procesadas en una base de datos de alta disponibilidad.
+    La empresa quiere minimizar la sobrecarga de gestión necesaria para mantener la solución.
+
+¿Cuál de las siguientes opciones recomendarías para cumplir estos requisitos?
+
+
+Explicación
+Opción correcta:
+
+* Empuja las actualizaciones de puntuación a Kinesis Data Streams, que utiliza una función Lambda para procesar estas actualizaciones y, a continuación, almacena estas actualizaciones procesadas en DynamoDB.
+
+Para ayudar a ingerir datos en tiempo real o datos de streaming a gran escala, puedes utilizar Amazon Kinesis Data Streams (KDS). KDS puede capturar continuamente gigabytes de datos por segundo de cientos de miles de fuentes. Los datos recopilados están disponibles en milisegundos, lo que permite realizar análisis en tiempo real. KDS permite ordenar los registros, así como leerlos y/o reproducirlos en el mismo orden en varias aplicaciones de Amazon Kinesis.
+
+Lambda se integra de forma nativa con Kinesis Data Streams. Las complejidades de polling, checkpointing y gestión de errores se abstraen cuando utilizas esta integración nativa. Los datos procesados pueden configurarse para guardarse en DynamoDB.
+
+Opciones incorrectas:
+
+* Empujar las actualizaciones de puntuaciones a una cola SQS que utiliza una flota de instancias EC2 (con Auto Scaling) para procesar estas actualizaciones en la cola SQS y, a continuación, almacenar estas actualizaciones procesadas en una base de datos MySQL RDS.
+
+* Empuja las actualizaciones de puntuaciones a Kinesis Data Streams, que utiliza una flota de instancias EC2 (con Auto Scaling) para procesar las actualizaciones en Kinesis Data Streams y, a continuación, almacena estas actualizaciones procesadas en DynamoDB.
+
+* Enviar actualizaciones de puntuaciones a un tema SNS, suscribir una función Lambda a este tema SNS para procesar las actualizaciones y, a continuación, almacenar estas actualizaciones procesadas en una base de datos SQL que se ejecuta en Amazon EC2.
+
+Estas tres opciones utilizan instancias EC2 como parte de la arquitectura de la solución. El caso de uso busca minimizar la sobrecarga de gestión necesaria para mantener la solución. Sin embargo, las instancias EC2 implican varias actividades de mantenimiento, como la gestión del sistema operativo invitado y del software desplegado en el sistema operativo invitado, incluidas las actualizaciones y los parches de seguridad, etc. Por tanto, estas opciones son incorrectas.
+
+Referencia:
+
+https://aws.amazon.com/blogs/big-data/best-practices-for-consuming-amazon-kinesis-data-streams-using-aws-lambda/

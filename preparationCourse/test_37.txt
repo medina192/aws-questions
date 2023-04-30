@@ -1,0 +1,49 @@
+Una empresa tiene una aplicación web que funciona 24*7 en el entorno de producción. El equipo de desarrollo de la empresa ejecuta un clon de la misma aplicación en el entorno de desarrollo hasta 8 horas al día. La empresa quiere construir la solución MÁS óptima en costes desplegando estas aplicaciones utilizando las opciones de precios más adecuadas para las instancias EC2.
+
+¿Qué recomiendas?
+
+
+
+Explicación
+Opción correcta:
+
+Utiliza instancias EC2 reservadas para la aplicación de producción e instancias bajo demanda para la aplicación de desarrollo.
+
+Existen múltiples opciones de precios para las instancias EC2, como bajo demanda, planes de ahorro, instancias reservadas e Instancias Spot.
+
+Opciones de precios de las instancias EC2:
+IMG 37
+
+vía - https://aws.amazon.com/ec2/pricing/
+
+Las instancias reservadas de Amazon EC2 proporcionan un descuento significativo (hasta el 72%) en comparación con los precios bajo demanda y proporcionan una reserva de capacidad cuando se utilizan en una zona de disponibilidad específica. Las IR te proporcionan un descuento significativo (hasta el 72%) en comparación con los precios de las instancias Bajo Demanda. Tienes flexibilidad para cambiar de familias, tipos de SO y tenencias mientras te beneficias de los precios de las IR cuando utilizas las IR Convertibles.
+IMG 37_2
+
+
+vía - https://aws.amazon.com/ec2/pricing/
+
+Para el caso de uso dado, puedes utilizar instancias EC2 reservadas para la aplicación de producción, ya que se ejecuta 24*7. De este modo puedes obtener un descuento del 72% si contratas un plazo de 3 años. Puedes utilizar instancias bajo demanda para la aplicación de desarrollo, ya que sólo se utiliza un máximo de 8 horas al día. Bajo demanda ofrece la flexibilidad de pagar por la instancia EC2 sólo cuando se está utilizando (de 0 a 8 horas para el caso de uso dado).
+
+Opciones incorrectas:
+
+Utilizar instancias EC2 reservadas para la aplicación de producción e instancias de bloques spot para la aplicación dev - Los bloques spot sólo pueden utilizarse durante un lapso de hasta 6 horas, por lo que esta opción no cumple los requisitos del caso de uso dado, en el que la aplicación dev puede estar en funcionamiento hasta 8 horas. También debes tener en cuenta que AWS ha dejado de ofrecer bloques de subasta a los nuevos clientes.
+
+Utiliza instancias EC2 reservadas para la aplicación de producción e Instancias Spot para la aplicación dev.
+
+Utiliza instancias EC2 bajo demanda para la aplicación de producción e Instancias Spot para la aplicación de desarrollo.
+
+Las Instancias Spot de Amazon EC2 te permiten aprovechar la capacidad no utilizada de EC2 en la nube de AWS. Las Instancias Spot están disponibles con un descuento de hasta el 90% en comparación con los precios bajo demanda. Puedes utilizar las Instancias Spot para diversas aplicaciones sin estado, tolerantes a fallos o flexibles.
+IMG 37_3
+
+vía - https://aws.amazon.com/ec2/spot/
+
+Las Instancias Spot pueden ser retiradas por AWS con dos minutos de antelación, por lo que las Instancias Spot no pueden utilizarse de forma fiable para ejecutar la aplicación dev (que puede estar en funcionamiento hasta 8 horas). Así que ambas opciones son incorrectas.
+
+Referencias:
+
+https://aws.amazon.com/ec2/pricing/
+
+https://aws.amazon.com/blogs/aws/new-ec2-spot-blocks-for-defined-duration-workloads/
+
+https://aws.amazon.com/ec2/spot/
+

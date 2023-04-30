@@ -1,0 +1,33 @@
+El fundador en solitario de una startup tecnológica acaba de crear una nueva cuenta de AWS. El fundador ha aprovisionado una instancia EC2 1A que se ejecuta en la región A. Posteriormente, toma una instantánea (snapshot) de la instancia 1A y crea una nueva AMI en la región A a partir de esta instantánea (snapshot). A continuación, copia esta AMI en otra región B. El fundador aprovisiona una instancia 1B en la región B utilizando esta nueva AMI en la región B.
+
+En este momento, ¿qué entidades existen en la región B?
+
+Explicación
+Opción correcta:
+
+* Existen 1 instancia EC2, 1 AMI y 1 instantánea (snapshot) en la región B
+
+Una Imagen de Máquina de Amazon (AMI) proporciona la información necesaria para lanzar una instancia. Debes especificar una AMI cuando lances una instancia. Cuando se copia la nueva AMI de la región A a la región B, se crea automáticamente una instantánea (snapshot) en la región B, porque las AMI se basan en las instantánea (snapshots) subyacentes. Además, se crea una instancia a partir de esta AMI en la región B. Por tanto, tenemos 1 instancia EC2, 1 AMI y 1 instantánea (snapshot) en la región B.
+
+Visión general de AMI:
+IMG 22
+
+
+vía - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html
+
+Opciones incorrectas:
+
+* Existen 1 instancia EC2 y 1 AMI en la región B
+
+* Existen 1 instancia EC2 y 2 AMIs en la región B
+
+* Existen 1 instancia EC2 y 1 instantánea (snapshot) en la región B
+
+Como se ha mencionado antes en la explicación, cuando se copia la nueva AMI de la región A a la región B, también se crea una instantánea (snapshot) en la región B, porque las AMI se basan en las instantánea (snapshots) subyacentes. Además, se crea una instancia a partir de esta AMI en la región B. Por lo tanto, tenemos 1 instancia EC2, 1 AMI y 1 instantánea (snapshot) en la región B. Por lo tanto, las tres opciones son incorrectas.
+
+Referencia:
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html
+
+
+

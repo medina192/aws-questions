@@ -1,0 +1,28 @@
+A cloud need five things to be considered cloud computing
+
+
+1.- On demand self service:
+    Anyone can deploy software without be an architect
+
+2.- Broad Network access
+    It can be accessed from any part of the world
+
+3.- Resource pooling
+    It offers a multi tenant service. Inside a physic service, the provider can divide the server
+    in many virtual servers. (Shared servers). A client can't see my virtual server, me neither.
+
+4.- Rapid elasticity
+    You can grow and reduce the resources of a service in any moment
+
+5.- Measured service
+    
+
+
+
+
+
+
+
+
+
+

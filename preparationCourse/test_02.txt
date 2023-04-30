@@ -1,0 +1,30 @@
+Una empresa utiliza buckets de Amazon S3 para almacenar datos confidenciales de clientes. La empresa ha
+ definido diferentes periodos de retención para los distintos objetos presentes en los buckets de Amazon S3, 
+ en función de los requisitos de conformidad. Pero, las reglas de retención no parecen funcionar como se 
+ esperaba.
+
+¿Cuál de las siguientes opciones representa una configuración válida para establecer periodos de retención de 
+objetos en buckets de Amazon S3? (Selecciona dos)
+
+
+
+Explicación
+Opciones correctas:
+
+Cuando aplicas un periodo de retención a una versión de objeto explícitamente, especificas una Mantener hasta la fecha para la versión de objeto - Puedes aplicar un periodo de retención a una versión de objeto explícitamente o a través de una configuración por defecto del bucket. Cuando aplicas un periodo de retención a una versión de objeto explícitamente, especificas una Fecha de retención hasta para la versión de objeto. Amazon S3 almacena la configuración de Retener hasta la fecha en los metadatos de la versión del objeto y protege la versión del objeto hasta que expira el periodo de retención.
+
+Diferentes versiones de un mismo objeto pueden tener diferentes modos y periodos de retención - Al igual que el resto de ajustes de Bloqueo de Objetos, los periodos de retención se aplican a versiones individuales de los objetos. Diferentes versiones de un mismo objeto pueden tener diferentes modos y periodos de retención.
+
+Por ejemplo, supongamos que tienes un objeto que lleva 15 días con un periodo de retención de 30 días, y haces PUT de un objeto en Amazon S3 con el mismo nombre y un periodo de retención de 60 días. En este caso, tu PUT tiene éxito y Amazon S3 crea una nueva versión del objeto con un periodo de retención de 60 días. La versión anterior mantiene su periodo de retención original y pasa a ser eliminable en 15 días.
+
+Opciones incorrectas:
+
+No puedes establecer un periodo de retención en una versión de objeto a través de una configuración por defecto del bucket - Puedes establecer un periodo de retención en una versión de objeto explícitamente o a través de una configuración por defecto del bucket.
+
+Cuando utilizas la configuración por defecto del bucket, especificas un Retain Until Date (Mantener hasta la fecha) para la versión del objeto - Cuando utilizas la configuración por defecto del bucket, no especificas una Fecha de Conservación. En su lugar, especificas una duración, en días o años, durante la cual cada versión de objeto colocada en el bucket debe estar protegida.
+
+La configuración por defecto del bucket anulará cualquier modo de retención o periodo explícitos que solicites en una versión de objeto - Si tu solicitud para colocar una versión de objeto en un bucket contiene un modo de retención y un periodo explícitos, esa configuración anulará cualquier configuración por defecto del bucket para esa versión de objeto.
+
+Referencia:
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html

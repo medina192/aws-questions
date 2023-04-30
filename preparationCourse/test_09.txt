@@ -1,0 +1,45 @@
+Una empresa de logística está construyendo una aplicación multinivel para rastrear la ubicación de sus 
+camiones durante las horas punta de funcionamiento. La empresa quiere que estos puntos de datos sean 
+accesibles en tiempo real en su plataforma de análisis a través de una API REST. La empresa te ha contratado 
+como arquitecto de soluciones certificado por AWS para construir una solución multinivel que almacene y
+ recupere estos datos de ubicación para su análisis.
+
+¿Cuál de las siguientes opciones responde al caso de uso planteado?
+
+Explicación
+Opción correcta:
+
+* Aprovecha Amazon API Gateway con Kinesis Data Analytics
+
+Puedes utilizar Kinesis Data Analytics para transformar y analizar datos de flujo en tiempo real con Apache Flink. Kinesis Data Analytics te permite crear rápidamente aplicaciones de procesamiento de flujos de extremo a extremo para análisis de registros, análisis de flujos de clics, Internet de las Cosas (IoT), tecnología publicitaria, juegos, etc. Los cuatro casos de uso más comunes son la extracción-transformación-carga (ETL) de flujos, la generación continua de métricas, la analítica en tiempo real con capacidad de respuesta y la consulta interactiva de flujos de datos. Kinesis Data Analytics para aplicaciones Apache Flink proporciona a tu aplicación 50 GB de almacenamiento de aplicaciones en ejecución por Unidad de Procesamiento Kinesis (KPU).
+
+Amazon API Gateway es un servicio totalmente administrado que te permite publicar, mantener, monitorizar y proteger API a cualquier escala. Amazon API Gateway ofrece dos opciones para crear API RESTful, API HTTP y API REST, así como una opción para crear API WebSocket.
+
+API Gateway:
+IMG ---------------------- 09
+
+vía - https://aws.amazon.com/blogs/aws/amazon-rds-custom-for-oracle-new-control-capabilities-in-database-environment/
+
+Para el caso de uso dado, puedes utilizar Amazon API Gateway para crear una API REST que gestione las solicitudes entrantes que tengan datos de ubicación de los camiones y los envíe a la aplicación Kinesis Data Analytics en el back-end.
+
+Análisis de datos Kinesis:
+
+IMG ------------------ 09_2
+
+vía - https://aws.amazon.com/kinesis/data-analytics/
+
+Opciones incorrectas:
+
+Aprovecha Amazon Athena con S3 - Amazon Athena es un servicio de consulta interactivo que facilita el análisis de datos en Amazon S3 utilizando SQL estándar. Athena no puede utilizarse para construir una API REST para consumir datos de la fuente. Por tanto, esta opción es incorrecta.
+
+Aprovecha QuickSight con Redshift - QuickSight es un servicio de inteligencia empresarial nativo en la nube y sin servidor. Quicksight no puede utilizarse para construir una API REST para consumir datos de la fuente. Redshift es un almacén de datos en la nube de AWS totalmente gestionado. Por tanto, esta opción es incorrecta.
+
+Utilizar Amazon API Gateway con AWS Lambda - No puedes utilizar Lambda para almacenar y recuperar los datos de ubicación para su análisis, por lo que esta opción es incorrecta.
+
+Referencias:
+
+https://docs.aws.amazon.com/apigateway/latest/developerguide/integrating-api-with-aws-services-kinesis.html
+
+https://aws.amazon.com/kinesis/data-analytics/
+
+https://aws.amazon.com/kinesis/data-analytics/faqs/

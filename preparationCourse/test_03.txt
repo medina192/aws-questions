@@ -1,0 +1,41 @@
+Una empresa gestiona una aplicación de medios sociales de varios niveles que se ejecuta en instancias EC2
+ detrás de un Application Load Balancer. Las instancias se ejecutan en un grupo EC2 Auto Scaling a través de
+  múltiples zonas de disponibilidad (AZ) y utilizan una base de datos Amazon Aurora. Como arquitecto de
+   soluciones, se te ha encomendado la tarea de hacer que la aplicación sea más resistente a los picos
+    periódicos en las tasas de solicitud.
+
+¿Cuál de las siguientes soluciones recomendarías para el caso de uso planteado? (Selecciona dos)
+
+
+Explicación
+Opciones correctas:
+
+Puedes utilizar las réplicas de Aurora y la distribución de CloudFront para que la aplicación sea más resistente a los picos de solicitudes.
+
+Utiliza la Aurora Replica
+
+Las réplicas Aurora tienen dos propósitos principales. Puedes hacerles consultas para escalar las operaciones de lectura de tu aplicación. Normalmente lo haces conectándote al punto final de lectura del clúster. De ese modo, Aurora puede repartir la carga de las conexiones de sólo lectura entre tantas Réplicas Aurora como tengas en el clúster. Las réplicas de Aurora también ayudan a aumentar la disponibilidad. Si la instancia escritora de un clúster deja de estar disponible, Aurora asciende automáticamente a una de las instancias lectoras para que ocupe su lugar como nueva escritora. Se pueden distribuir hasta 15 réplicas de Aurora por las zonas de disponibilidad (AZ) que abarca un clúster de BD dentro de una región de AWS.
+
+Utilizar la distribución CloudFront delante del Application Load Balancer
+
+Amazon CloudFront es un servicio rápido de red de entrega de contenidos (CDN) que entrega de forma segura datos, vídeos, aplicaciones y API a clientes de todo el mundo con baja latencia y altas velocidades de transferencia, todo ello en un entorno fácil de usar para los desarrolladores. Los puntos de presencia (POP) de CloudFront (ubicaciones de borde) garantizan que los contenidos populares puedan servirse rápidamente a tus espectadores. CloudFront también tiene cachés de borde regionales que acercan más tu contenido a tus espectadores, incluso cuando el contenido no es lo suficientemente popular como para permanecer en un POP, para ayudar a mejorar el rendimiento de ese contenido.
+
+CloudFront ofrece una función de conmutación por error de origen para ayudar a satisfacer tus necesidades de resistencia de datos. CloudFront es un servicio global que entrega tu contenido a través de una red mundial de centros de datos denominados ubicaciones de borde o puntos de presencia (POP). Si tu contenido no está ya almacenado en caché en una ubicación de borde, CloudFront lo recupera de un origen que hayas identificado como fuente de la versión definitiva del contenido.
+
+Opciones incorrectas:
+
+Utiliza AWS Shield - AWS Shield es un servicio gestionado de protección contra la Denegación de Servicio Distribuida (DDoS) que protege las aplicaciones que se ejecutan en AWS. AWS Shield proporciona detección siempre activa y mitigaciones automáticas en línea que minimizan el tiempo de inactividad y la latencia de las aplicaciones. Hay dos niveles de AWS Shield: Estándar y Avanzado. Shield no puede utilizarse para mejorar la capacidad de recuperación de las aplicaciones para hacer frente a picos de tráfico.
+
+Utiliza AWS Global Accelerator - AWS Global Accelerator es un servicio que mejora la disponibilidad y el rendimiento de tus aplicaciones con usuarios locales o globales. Proporciona direcciones IP estáticas que actúan como punto de entrada fijo a los puntos finales de tus aplicaciones en una o varias regiones de AWS, como tus balanceadores de carga de aplicaciones, balanceadores de carga de red o instancias de Amazon EC2. Global Accelerator es una buena opción para casos de uso no HTTP, como juegos (UDP), IoT (MQTT) o Voz sobre IP, así como para casos de uso HTTP que requieran específicamente direcciones IP estáticas o una conmutación por error regional determinista y rápida. Dado que CloudFront es mejor para mejorar la resistencia de las aplicaciones para gestionar picos de tráfico, esta opción queda descartada.
+
+Utiliza AWS Direct Connect - AWS Direct Connect te permite establecer una conexión de red dedicada entre tu red y una de las ubicaciones de AWS Direct Connect. Utilizando VLAN 802.1q estándar del sector, esta conexión dedicada puede dividirse en varias interfaces virtuales. AWS Direct Connect no utiliza Internet, sino conexiones de red dedicadas y privadas entre tu intranet y Amazon VPC. Direct Connect no puede utilizarse para mejorar la capacidad de recuperación de las aplicaciones para hacer frente a picos de tráfico.
+
+Referencias:
+
+https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/disaster-recovery-resiliency.html
+
+https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Replication.html
+
+https://aws.amazon.com/global-accelerator/faqs/
+
+https://docs.aws.amazon.com/global-accelerator/latest/dg/disaster-recovery-resiliency.html

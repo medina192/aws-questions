@@ -1,0 +1,34 @@
+Un servicio de alojamiento de archivos utiliza Amazon S3 para potenciar sus ofertas de almacenamiento. Actualmente, todos los archivos de los clientes se cargan directamente en un único bucket de S3. El equipo de ingeniería ha empezado a ver problemas de escalabilidad, donde las subidas de archivos de los clientes han empezado a fallar durante las horas de mayor acceso, con más de 5000 peticiones por segundo.
+
+¿Cuál de los siguientes es el modo MÁS eficiente en cuanto a recursos y óptimo en cuanto a costes de abordar esta cuestión?
+
+
+Explicación
+Opción correcta:
+
+Cambiar la arquitectura de la aplicación para crear prefijos personalizados específicos del cliente dentro del bucket único y luego cargar los archivos diarios en esas ubicaciones prefijadas
+
+Amazon Simple Storage Service (Amazon S3) es un servicio de almacenamiento de objetos que ofrece escalabilidad, disponibilidad de datos, seguridad y rendimiento líderes del sector. Tus aplicaciones pueden alcanzar fácilmente miles de transacciones por segundo en el rendimiento de las solicitudes al cargar y recuperar almacenamiento de Amazon S3. Amazon S3 escala automáticamente a altas tasas de solicitud. Por ejemplo, tu aplicación puede alcanzar al menos 3.500 solicitudes PUT/COPY/POST/DELETE o 5.500 solicitudes GET/HEAD por segundo por prefijo en un bucket.
+
+No hay límites al número de prefijos de un bucket. Puedes aumentar tu rendimiento de lectura o escritura paralelizando las lecturas. Por ejemplo, si creas 10 prefijos en un bucket de Amazon S3 para paralelizar las lecturas, podrías escalar tu rendimiento de lectura a 55.000 solicitudes de lectura por segundo. Consulta este ejemplo para obtener más claridad sobre los prefijos: si tienes un archivo f1 almacenado en una ruta de objeto de S3 como s3://nombre_de_tu_bucket/carpeta1/subcarpeta_1/f1, entonces /carpeta1/subcarpeta_1/ se convierte en el prefijo del archivo f1.
+
+Algunas aplicaciones de lago de datos en Amazon S3 analizan millones o miles de millones de objetos para consultas que se ejecutan sobre petabytes de datos. Estas aplicaciones de lago de datos alcanzan velocidades de transferencia de una sola instancia que maximizan la interfaz de red utilizada para su instancia de Amazon EC2, que puede ser de hasta 100 Gb/s en una sola instancia. A continuación, estas aplicaciones agregan el rendimiento en varias instancias para obtener varios terabits por segundo. Por lo tanto, crear prefijos personalizados específicos del cliente dentro del bucket único y luego cargar los archivos diarios en esas ubicaciones prefijadas es la MEJOR solución para las limitaciones dadas.
+
+Optimizar el rendimiento de Amazon S3:
+IMG 42
+
+vía - https://docs.aws.amazon.com/AmazonS3/latest/dev/optimizing-performance.html
+
+Opciones incorrectas:
+
+Cambiar la arquitectura de la aplicación para crear un nuevo bucket de S3 para cada cliente y luego subir los archivos de cada cliente directamente a los respectivos buckets - Crear un nuevo bucket de S3 para cada nuevo cliente es una forma ineficaz de gestionar la disponibilidad de recursos (los buckets de S3 deben ser globalmente únicos), ya que algunos clientes pueden utilizar el servicio con poca frecuencia, pero el nombre del bucket queda bloqueado para ellos para siempre. Además, esto no es realmente necesario, ya que podemos utilizar prefijos S3 para mejorar el rendimiento.
+
+Cambiar la arquitectura de la aplicación para crear un nuevo bucket de S3 para los datos de cada día y, a continuación, subir los archivos diarios directamente bajo el bucket de ese día - Crear un nuevo bucket de S3 para los datos de cada nuevo día también es una forma ineficiente de gestionar la disponibilidad de recursos (los buckets de S3 tienen que ser globalmente únicos), ya que algunos de los nombres de los buckets pueden no estar disponibles para el procesamiento de los datos diarios. Además, esto no es realmente necesario, ya que podemos utilizar prefijos de S3 para mejorar el rendimiento.
+
+Cambiar la arquitectura de la aplicación para utilizar EFS en lugar de Amazon S3 para almacenar los archivos subidos por los clientes - EFS es una opción de almacenamiento más costosa en comparación con S3, por lo que se descarta.
+
+Referencia:
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/optimizing-performance.html
+
+

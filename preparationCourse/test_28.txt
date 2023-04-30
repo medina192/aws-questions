@@ -1,0 +1,41 @@
+El sitio web dinámico de una empresa se aloja utilizando servidores locales en su centro de datos de Estados Unidos. La empresa va a lanzar su sitio web en Asia, y quiere optimizar los tiempos de carga del sitio web para los nuevos usuarios de Asia. El backend del sitio web debe permanecer en Estados Unidos. El sitio web se lanzará en unos días, y se necesita una solución inmediata.
+
+¿Qué me recomiendas?
+
+Explicación
+Opción correcta:
+
+* Utiliza Amazon CloudFront con un origen personalizado que apunte a los servidores locales.
+
+Amazon CloudFront es un servicio web que ofrece a las empresas y a los desarrolladores de aplicaciones web una forma sencilla y rentable de distribuir contenido con baja latencia y alta velocidad de transferencia de datos. Amazon CloudFront utiliza las cabeceras estándar de control de caché que estableces en tus archivos para identificar el contenido estático y dinámico. Puedes utilizar diferentes orígenes para distintos tipos de contenido en un mismo sitio: por ejemplo, Amazon S3 para objetos estáticos, Amazon EC2 para contenido dinámico y orígenes personalizados para contenido de terceros.
+
+Amazon CloudFront:
+IMG 28
+
+Un servidor de origen almacena la versión original y definitiva de tus objetos. Si sirves contenido a través de HTTP, tu servidor de origen es un bucket de Amazon S3 o un servidor HTTP, como un servidor web. Tu servidor HTTP puede ejecutarse en una instancia de Amazon Elastic Compute Cloud (Amazon EC2) o en un servidor que tú administres; estos servidores también se conocen como orígenes personalizados.
+IMG 28_2
+
+vía - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
+
+Amazon CloudFront emplea una red global de ubicaciones de borde y cachés de borde regionales que almacenan en caché copias de tu contenido cerca de tus espectadores. Amazon CloudFront garantiza que las solicitudes de los usuarios finales sean atendidas por la ubicación de borde más cercana. Como resultado, las solicitudes de los espectadores recorren una distancia corta, lo que mejora el rendimiento para tus espectadores. Por tanto, para el caso de uso dado, los usuarios de Asia disfrutarán de una experiencia de baja latencia al utilizar el sitio web, aunque los servidores locales sigan estando en EE.UU.
+
+Opciones incorrectas:
+
+Utilizar Amazon CloudFront con un origen personalizado que apunte al registro DNS del sitio web en Route 53 - Esta opción se ha añadido como distractor. CloudFront no puede tener un origen personalizado que apunte al registro DNS del sitio web en Route 53.
+
+Migrar el sitio web a Amazon S3. Utiliza la replicación entre regiones de AWS en EE.UU. y Asia - El caso de uso indica que la empresa opera un sitio web dinámico. Puedes utilizar Amazon S3 para alojar un sitio web estático. En un sitio web estático, las páginas web individuales incluyen contenido estático. También pueden contener scripts del lado del cliente. En cambio, un sitio web dinámico se basa en el procesamiento del lado del servidor, incluidos los scripts del lado del servidor, como PHP, JSP o ASP.NET. Amazon S3 no admite scripts del lado del servidor, pero AWS dispone de otros recursos para alojar sitios web dinámicos. Por tanto, esta opción es incorrecta.
+
+Utilizar una política de enrutamiento de geoproximidad Route 53 que apunte a los servidores locales - Como los servidores locales siguen estando en EE.UU., ni siquiera utilizar una política de enrutamiento de geoproximidad Route 53 que dirija a los usuarios de Asia a los servidores locales de EE.UU. reduciría la latencia para los usuarios de Asia. Por tanto, esta opción es incorrecta.
+
+Referencias:
+
+https://aws.amazon.com/cloudfront/
+
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
+
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html
+
+
+
+
+

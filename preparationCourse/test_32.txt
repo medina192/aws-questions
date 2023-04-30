@@ -1,0 +1,49 @@
+Una empresa de comercio electrónico busca una solución con alta disponibilidad, ya que planea migrar su aplicación estrella a una flota de instancias de Amazon EC2. La solución debe permitir el enrutamiento basado en contenido como parte de la arquitectura.
+
+Como arquitecto de soluciones, ¿cuál de las siguientes sugerirías para la empresa?
+
+
+Explicación
+Opción correcta:
+
+Utiliza un Application Load Balancer para distribuir el tráfico a las instancias EC2 repartidas por diferentes zonas de disponibilidad (AZ). Configura un grupo de autoescalado para enmascarar cualquier fallo de una instancia.
+
+El Application Load Balancer (ALB) es el más adecuado para equilibrar la carga de tráfico HTTP y HTTPS y proporciona un enrutamiento avanzado de solicitudes orientado a la entrega de arquitecturas de aplicaciones modernas, incluidos microservicios y contenedores. Al operar a nivel de solicitud individual (Capa 7), el Application Load Balancer enruta el tráfico a destinos dentro de Amazon Virtual Private Cloud (Amazon VPC) basándose en el contenido de la solicitud.
+
+Esta es la opción correcta, ya que la pregunta tiene un requisito específico para el enrutamiento basado en el contenido, que puede configurarse a través del Application Load Balancer. Las diferentes AZ proporcionan alta disponibilidad a la arquitectura global y el grupo de autoescalado ayudará a enmascarar cualquier fallo de instancia.
+
+Más información sobre el Application Load Balancer:
+IMG 32 
+
+vía - https://aws.amazon.com/blogs/aws/new-aws-application-load-balancer/
+
+Opciones incorrectas:
+
+Utilizar un Network Load Balancer para distribuir el tráfico a las instancias EC2 repartidas por diferentes zonas de disponibilidad (AZ). Configurar una dirección IP Privada para enmascarar cualquier fallo de una instancia - El Network Load Balancer no puede facilitar el enrutamiento basado en contenido, por lo que esta opción es incorrecta.
+
+Utiliza un grupo de autoescalado para distribuir el tráfico a las instancias EC2 repartidas por diferentes zonas de disponibilidad (AZ). Configura una dirección IP Elástica para enmascarar cualquier fallo de una instancia.
+
+Utiliza un grupo de autoescalado para distribuir el tráfico a las instancias EC2 repartidas por diferentes zonas de disponibilidad (AZ). Configura una dirección IP Pública para enmascarar cualquier fallo de una instancia.
+
+Ambas opciones son incorrectas, ya que no puedes utilizar el grupo Autoescalado para distribuir el tráfico a las instancias EC2.
+
+Una dirección IP elástica es una dirección IPv4 pública y estática asignada a tu cuenta de AWS. Con una dirección IP elástica, puedes enmascarar el fallo de una instancia o software reasignando rápidamente la dirección a otra instancia de tu cuenta. Las IPs elásticas no cambian y permanecen asignadas a tu cuenta hasta que las eliminas.
+
+Más información sobre el Load Balancer:
+IMG 32_2
+
+
+vía - https://docs.aws.amazon.com/whitepapers/latest/fault-tolerant-components/fault-tolerant-components.pdf
+
+Puedes extender tu grupo de autoescalado por varias zonas de disponibilidad (AZ) dentro de una región y luego adjuntar un equilibrador de carga para distribuir el tráfico entrante por esas zonas.
+IMG 32_3
+
+vía - https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-availability-zone.html
+
+Referencias:
+
+https://aws.amazon.com/blogs/aws/new-aws-application-load-balancer/
+
+https://docs.aws.amazon.com/whitepapers/latest/fault-tolerant-components/fault-tolerant-components.pdf
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-availability-zone.html

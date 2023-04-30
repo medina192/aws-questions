@@ -1,0 +1,49 @@
+Una empresa ha configurado un Network Load Balancer (NLB) con un grupo de destino que está configurado para utilizar un grupo de Amazon EC2 Auto Scaling con múltiples instancias EC2 (a través de 3 zonas de disponibilidad (AZ)) que ejecutan el servicio web. La empresa está recibiendo una mala respuesta de sus clientes en cuanto a la disponibilidad de la aplicación, ya que el NLB es incapaz de detectar los errores HTTP de la aplicación. Estos errores HTTP requieren un reinicio manual de las instancias EC2 que ejecutan el servicio web.
+
+La empresa te ha contratado como arquitecto de soluciones certificado por AWS para crear la solución más adecuada que no requiera un esfuerzo de desarrollo/scripting personalizado. ¿Cuál de las siguientes opciones sugerirías?
+
+
+
+
+Explicación
+Opción correcta:
+
+Reemplaza el Network Load Balancer (NLB) por un Application Load Balancer (ALB) y configura comprobaciones de estado HTTP en el ALB apuntando a la URL de la aplicación. Aprovecha el grupo de autoescalado para sustituir las instancias no sanas.
+
+Un Network Load Balancer (NLB) funciona en la cuarta capa del modelo de Interconexión de Sistemas Abiertos (OSI). Puede gestionar millones de solicitudes por segundo. Cuando el equilibrador de carga recibe una solicitud de conexión, selecciona un destino del grupo de destinos para la regla por defecto. Intenta abrir una conexión TCP con el objetivo seleccionado en el puerto especificado en la configuración del oyente.
+
+Un equilibrador de carga sirve como único punto de contacto para los clientes. El equilibrador de carga distribuye el tráfico entrante entre múltiples destinos, como las instancias de Amazon EC2. Esto aumenta la disponibilidad de tu aplicación. Añade uno o más escuchadores a tu balanceador de carga.
+
+Un oyente comprueba si hay solicitudes de conexión de clientes, utilizando el protocolo y el puerto que configures, y reenvía las solicitudes a un grupo de destino. Cada grupo de destino enruta las peticiones a uno o más objetivos registrados, como instancias EC2, utilizando el protocolo TCP y el número de puerto que especifiques.
+IMG 55
+
+
+vía - https://docs.aws.amazon.com/elasticloadbalancing/latest/network/target-group-health-checks.html
+
+Para el caso de uso dado, necesitas cambiar el NLB por un ALB. Esto te permitiría utilizar comprobaciones de estado basadas en HTTP para detectar cuándo la aplicación web se enfrenta a errores. A continuación, puedes aprovechar el grupo de autoescalado para utilizar las comprobaciones de estado del ALB para identificar y sustituir las instancias no sanas.}
+IMG 55_2
+
+
+vía - https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-elb-healthcheck.html
+
+Opciones incorrectas:
+
+Configura una alarma de CloudWatch para monitorizar la métrica UnhealthyHostCount del NLB. Aprovecha el grupo Auto Scaling para reemplazar las instancias no saludables cuando la alarma esté en estado ALARM - El servicio Elastic Load Balancer (ELB) te proporciona métricas de Amazon CloudWatch (HealthyHostCount y UnhealthyHostCount) para monitorizar los objetivos detrás de tus balanceadores de carga. Aunque la métrica de recuento de hosts no saludables proporciona el número agregado de hosts fallidos, existe un punto de dolor común cuando creas una alarma para hosts no saludables basándote en estas métricas. Esto se debe a que no hay una forma sencilla de saber qué objetivo era o es insalubre. Crear una solución utilizando la alarma de Cloudwatch requiere un importante esfuerzo de desarrollo/scripting para identificar el objetivo insalubre, por lo que esta opción es incorrecta.
+
+Configura las comprobaciones de estado HTTP en el Network Load Balancer (NLB) apuntando a la URL de la aplicación. Aprovecha el grupo de autoescalado para sustituir las instancias no saludables - El NLB utiliza HTTP, HTTPS y TCP como posibles protocolos al realizar comprobaciones de estado en los objetivos. Por defecto se utiliza el protocolo TCP. Si el tipo de objetivo es ALB, los protocolos de comprobación de estado admitidos son HTTP y HTTPS. Aunque ahora es posible configurar un ALB como objetivo de un NLB, acabaría siendo una solución más costosa e ineficiente que sustituir el NLB por el ALB, por lo que esta solución no es la más adecuada.
+
+Configura una tarea cron en las instancias EC2 para inspeccionar los registros de la aplicación web con una frecuencia regular. Cuando se detecten errores HTTP, fuerza el reinicio de la aplicación - Esta opción requiere un esfuerzo significativo de desarrollo/scripting para identificar el objetivo no saludable. No es una solución tan elegante como aprovechar directamente las capacidades de comprobación del estado HTTP del ALB. Por tanto, esta opción es incorrecta.
+
+Referencias:
+
+https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html
+
+https://docs.aws.amazon.com/elasticloadbalancing/latest/network/target-group-health-checks.html
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-add-elb-healthcheck.html
+
+https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-cloudwatch-metrics.html
+
+https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-troubleshooting.html
+
+https://aws.amazon.com/blogs/networking-and-content-delivery/identifying-unhealthy-targets-of-elastic-load-balancer/

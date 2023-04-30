@@ -1,0 +1,35 @@
+Una empresa líder en análisis de medios sociales está contemplando la posibilidad de trasladar su pila de aplicaciones dockerizadas a la nube de AWS. La empresa no está segura del precio de utilizar Elastic Container Service (ECS) con el tipo de lanzamiento EC2 en comparación con Elastic Container Service (ECS) con el tipo de lanzamiento Fargate.
+
+¿Cuál de las siguientes opciones es correcta en relación con los precios de estos dos servicios?
+
+
+
+Explicación
+Opción correcta:
+
+* El ECS con tipo de lanzamiento EC2 se cobra en función de las instancias EC2 y los volúmenes EBS utilizados. ECS con tipo de lanzamiento Fargate se cobra en función de los recursos de vCPU y memoria que solicite la aplicación en contenedor.
+
+Amazon Elastic Container Service (Amazon ECS) es un servicio de orquestación de contenedores totalmente administrado. ECS te permite ejecutar, escalar y proteger fácilmente aplicaciones de contenedores Docker en AWS.
+
+Visión general de ECS:
+IMG 23
+
+vía - https://aws.amazon.com/ecs/
+
+Con el tipo de lanzamiento Fargate, pagas por la cantidad de recursos de vCPU y memoria que solicita tu aplicación en contenedor. Los recursos de vCPU y memoria se calculan desde el momento en que se extraen las imágenes de tu contenedor hasta que finaliza la tarea* de Amazon ECS, redondeado al segundo más cercano. Con el tipo de lanzamiento EC2, no hay cargos adicionales por el tipo de lanzamiento EC2. Pagas por los recursos de AWS (por ejemplo, instancias EC2 o volúmenes EBS) que creas para almacenar y ejecutar tu aplicación.
+
+Opciones incorrectas:
+
+* Tanto ECS con tipo de lanzamiento EC2 como ECS con tipo de lanzamiento Fargate se cobran en función de los recursos de vCPU y memoria que solicite la aplicación en contenedor
+
+* Tanto ECS con tipo de lanzamiento EC2 como ECS con tipo de lanzamiento Fargate se cobran en función de las instancias EC2 y los volúmenes EBS utilizados
+
+Como ya se ha dicho, con el tipo de lanzamiento Fargate pagas por la cantidad de recursos de vCPU y memoria. Con el tipo de lanzamiento EC2, pagas por los recursos de AWS (por ejemplo, instancias EC2 o volúmenes EBS). Por tanto, ambas opciones son incorrectas.
+
+* Tanto ECS con tipo de lanzamiento EC2 como ECS con tipo de lanzamiento Fargate sólo se cobran en función del Elastic Container Service utilizado por hora
+
+Ésta es una opción inventada y se ha añadido como distractor.
+
+Referencias:
+
+https://aws.amazon.com/ecs/pricing/

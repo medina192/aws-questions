@@ -1,0 +1,29 @@
+Una cadena de noticias utiliza Amazon S3 para agregar las secuencias de vídeo en bruto de sus equipos de
+ reporteros en todo EE.UU.. La cadena de noticias se ha expandido recientemente a nuevas geografías en Europa
+  y Asia. Los equipos técnicos de las sucursales en el extranjero han informado de enormes retrasos en la carga
+   de archivos de vídeo de gran tamaño en el bucket S3 de destino.
+
+¿Cuáles de las siguientes son las opciones MÁS rentables para mejorar la velocidad de carga de archivos
+ en S3? (Selecciona dos)
+
+
+ Explicación
+Opciones correctas:
+
+Utiliza Amazon S3 Transfer Acceleration (Aceleración de transferencias de Amazon S3) para cargar archivos más rápidamente en el bucket de S3 de destino - La Aceleración de transferencias de Amazon S3 permite transferir archivos de forma rápida, sencilla y segura a través de largas distancias entre tu cliente y un bucket de S3. La Aceleración de transferencias aprovecha las ubicaciones de borde distribuidas globalmente de Amazon CloudFront. Cuando los datos llegan a una ubicación de borde, se enrutan a Amazon S3 a través de una ruta de red optimizada.
+
+Utiliza subidas multiparte para subir archivos más rápidamente al bucket S3 de destino - La subida multiparte te permite subir un único objeto como un conjunto de partes. Cada parte es una porción contigua de los datos del objeto. Puedes subir estas partes del objeto de forma independiente y en cualquier orden. Si falla la transmisión de alguna parte, puedes retransmitir esa parte sin que afecte a las demás. Una vez subidas todas las partes de tu objeto, Amazon S3 ensambla estas partes y crea el objeto. En general, cuando el tamaño de tu objeto alcance los 100 MB, deberías considerar la posibilidad de utilizar la subida multiparte en lugar de subir el objeto en una sola operación. La subida multiparte proporciona un mejor rendimiento, por lo que facilita una subida de archivos más rápida.
+
+Opciones incorrectas:
+
+Crea varias conexiones de AWS Connect Direct de AWS entre la nube de AWS y sucursales en Europa y Asia. Utiliza las conexiones de AWS Connect Direct para subir archivos más rápidamente a S3 - AWS Direct Connect es una solución de servicios en la nube que facilita el establecimiento de una conexión de red dedicada desde tus instalaciones a AWS. AWS Direct Connect te permite establecer una conexión de red dedicada entre tu red y una de las ubicaciones de AWS Direct Connect. El aprovisionamiento de Direct Connect lleva mucho tiempo (varios meses) y es excesivo para un caso de uso determinado.
+
+Crea varias conexiones VPN de sitio a sitio entre la nube de AWS y sucursales en Europa y Asia. Utiliza estas conexiones VPN para cargar archivos más rápidamente en S3 - AWS Site-to-Site VPN te permite conectar de forma segura tu red local o sucursal a tu Amazon Virtual Private Cloud (Amazon VPC). Puedes ampliar de forma segura la red de tu centro de datos o sucursal a la nube con una conexión VPN de sitio a sitio de AWS. Una Conexión VPN VPC utiliza IPSec para establecer una conectividad de red cifrada entre tu intranet y Amazon VPC a través de Internet. Las Conexiones VPN son una buena solución si tienes requisitos de ancho de banda de bajos a modestos y puedes tolerar la variabilidad inherente a la conectividad basada en Internet. La VPN de sitio a sitio no ayudará a acelerar las velocidades de transferencia de archivos a S3 para el caso de uso dado.
+
+Utiliza el Acelerador Global de AWS para cargar archivos más rápidamente en el bucket de S3 de destino - El Acelerador Global de AWS es un servicio que mejora la disponibilidad y el rendimiento de tus aplicaciones con usuarios locales o globales. Proporciona direcciones IP estáticas que actúan como punto de entrada fijo a los puntos finales de tus aplicaciones en una o varias regiones de AWS, como tus balanceadores de carga de aplicaciones, balanceadores de carga de red o instancias de Amazon EC2. AWS Global Accelerator no ayudará a acelerar las velocidades de transferencia de archivos a S3 para el caso de uso dado.
+
+Referencias:
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html

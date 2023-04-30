@@ -1,0 +1,27 @@
+Una empresa de TI (Tecnología e Información) quiere revisar sus mejores prácticas de seguridad después de que se informara de un incidente en el que a un nuevo desarrollador del equipo se le asignó acceso total a DynamoDB. El desarrollador borró accidentalmente un par de tablas del entorno de producción mientras creaba una nueva función.
+
+¿Cuál es la forma MÁS eficaz de abordar este problema para que no vuelvan a producirse incidentes de este tipo?
+
+Explicación
+Opción correcta:
+
+Utiliza el límite de permisos para controlar los permisos máximos que los empleados pueden conceder a los principales de IAM
+
+Se puede utilizar un límite de permisos para controlar los permisos máximos que los empleados pueden conceder a los principales de IAM (es decir, usuarios y roles) que crean y gestionan. Como administrador de IAM, puedes definir uno o varios límites de permisos mediante políticas gestionadas y permitir que tu empleado cree una entidad de seguridad con este límite. A continuación, el empleado puede adjuntar una política de permisos a esta entidad de seguridad. Sin embargo, los permisos efectivos de la entidad de seguridad son la intersección del límite de permisos y la política de permisos. Como resultado, el nuevo principal no puede superar el límite que hayas definido. Por tanto, utilizar el límite de permisos es la solución adecuada para este caso de uso.
+
+Ejemplo de límite de permiso:
+IMG 26
+
+vía - https://aws.amazon.com/blogs/security/delegate-permission-management-to-developers-using-iam-permissions-boundaries/
+
+Opciones incorrectas:
+
+Eliminar el acceso completo a la base de datos para todos los usuarios IAM de la organización - No es práctico eliminar el acceso completo para todos los usuarios IAM de la organización, porque un conjunto selecto de usuarios necesita este acceso para la administración de la base de datos. Por tanto, esta opción no es correcta.
+
+El CTO debe revisar los permisos de cada nuevo usuario IAM del desarrollador para que no se repitan estos incidentes - Tampoco se espera que el CTO revise los permisos de cada nuevo usuario IAM del desarrollador, ya que es mejor hacerlo mediante un procedimiento automatizado. Esta opción se ha añadido como distractor.
+
+Sólo el usuario root debe tener acceso total a la base de datos en la organización - Como práctica recomendada, el usuario root no debe acceder a la cuenta de AWS para realizar ningún procedimiento administrativo. Por tanto, esta opción no es correcta.
+
+Referencia:
+
+https://aws.amazon.com/blogs/security/delegate-permission-management-to-developers-using-iam-permissions-boundaries/

@@ -1,0 +1,29 @@
+¿Cuál de las siguientes características de un bucket de Amazon S3 sólo se puede suspender una vez que se han habilitado?
+
+
+Explicación
+Opción correcta:
+
+Versionado
+
+Una vez que habilitas la versión de un bucket, nunca puede volver a un estado no versionado. El versionado sólo puede suspenderse una vez habilitado.
+
+Visión general de las versiones:
+IMG 52
+
+vía - https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html
+
+Opciones incorrectas:
+
+Registro de acceso al servidor
+
+Alojamiento estático de sitios web
+
+El solicitante paga
+
+Las funciones Registro de acceso al servidor, Alojamiento estático de sitios web y Solicitante paga pueden desactivarse incluso después de haberlas activado.
+
+Referencia:
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html
+

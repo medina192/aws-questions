@@ -1,0 +1,52 @@
+Un grupo de investigación necesita una flota de instancias EC2 para una tarea especializada que debe ofrecer un alto
+ rendimiento de E/S aleatoria. Cada instancia de la flota tendría acceso a un conjunto de datos replicado en
+  todas las instancias. Debido a la arquitectura de aplicación resistente, la tarea especializada seguiría
+   procesándose incluso si alguna instancia dejara de funcionar, ya que la arquitectura de aplicación subyacente
+    garantizaría que la instancia de sustitución tuviera acceso al conjunto de datos necesario.
+
+¿Cuál de las siguientes opciones es la solución MÁS rentable y eficiente en recursos para crear esta flota de
+ instancias EC2?
+
+Opción correcta:
+
+Utilizar instancias EC2 basadas en el almacén de instancias (Instance Store)
+
+Un almacén de instancia proporciona almacenamiento temporal a nivel de bloque para tu instancia. Este almacenamiento se encuentra en discos conectados físicamente al ordenador anfitrión. El almacén de instancias es ideal para el almacenamiento temporal de información que cambia con frecuencia, como buffers, cachés, datos de memoria virtual y otros contenidos temporales, o para datos que se replican en una flota de instancias, como un grupo de servidores web con carga equilibrada. Los volúmenes de almacenamiento de instancias se incluyen como parte del coste de uso de la instancia.
+
+Dado que los volúmenes basados en Instance Store proporcionan un alto rendimiento de E/S aleatoria a bajo coste (ya que el almacenamiento forma parte del coste de uso de la instancia) y que la arquitectura resistente puede ajustarse a la pérdida de cualquier instancia, deberías utilizar instancias EC2 basadas en Instance Store para este caso de uso.
+
+Visión general del almacén de instancias EC2:
+
+IMG ---------- 04
+
+vía - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html
+
+
+
+
+
+
+
+Opciones incorrectas:
+
+Utilizar instancias EC2 basadas en EBS - Los volúmenes basados en EBS tendrían que utilizar IOPS provisionadas (io1) como tipo de almacenamiento y eso supondría costes adicionales. Como buscamos la solución más rentable, esta opción queda descartada.
+
+Utilizar instancias EC2 con puntos de montaje EFS - Utilizar EFS implica que habría que aprovisionar recursos adicionales. Como buscamos la solución más eficiente en cuanto a recursos, esta opción también queda descartada.
+
+Utilizar instancias EC2 con acceso a almacenamiento basado en S3 - Utilizar instancias EC2 con acceso a almacenamiento basado en S3 no proporciona un alto rendimiento de E/S aleatoria, esta opción sólo se añade como distractor.
+
+Referencia:
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html
+
+
+
+
+
+
+
+
+
+
+
+

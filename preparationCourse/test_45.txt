@@ -1,0 +1,30 @@
+Una empresa utiliza DynamoDB como almacén de datos para varios tipos de datos de clientes, como perfiles de usuario, eventos de usuario, clics y enlaces visitados. Algunos de estos casos de uso requieren una alta tasa de solicitudes (millones de solicitudes por segundo), baja latencia predecible y fiabilidad. Ahora la empresa quiere añadir una capa de caché para soportar grandes volúmenes de lectura.
+
+Como arquitecto de soluciones, ¿cuál de los siguientes servicios de AWS recomendarías como capa de almacenamiento en caché para este caso de uso? (Selecciona dos)
+
+
+xplicación
+Opciones correctas:
+
+Acelerador DynamoDB (DAX) - El Acelerador DynamoDB de Amazon (DAX) es una caché en memoria para DynamoDB totalmente administrada, de alta disponibilidad, que ofrece una mejora del rendimiento de hasta 10 veces, de milisegundos a microsegundos, incluso con millones de solicitudes por segundo. DAX realiza todo el trabajo pesado necesario para añadir aceleración en memoria a tus tablas DynamoDB, sin necesidad de que los desarrolladores gestionen la invalidación de la caché, el poblamiento de datos o la gestión de clústeres. Por tanto, se trata de una opción correcta.
+
+Visión general de DAX:
+IMG 45
+
+vía - https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.concepts.html
+
+ElastiCache - Amazon ElastiCache para Memcached es un front-end ideal para almacenes de datos como Amazon RDS o Amazon DynamoDB, ya que proporciona una capa intermedia de alto rendimiento para aplicaciones con tasas de solicitudes extremadamente altas y/o requisitos de baja latencia. Por tanto, también es una opción correcta.
+
+Opciones incorrectas:
+
+RDS - Amazon Relational Database Service (Amazon RDS) facilita la configuración, el funcionamiento y el escalado de una base de datos relacional en la nube. Proporciona una capacidad rentable y redimensionable, a la vez que automatiza tareas de administración que consumen mucho tiempo, como el aprovisionamiento de hardware, la configuración de la base de datos, la aplicación de parches y las copias de seguridad. RDS no puede utilizarse como capa de almacenamiento en caché para DynamoDB.
+
+Elasticsearch - Elasticsearch es un motor de búsqueda basado en la biblioteca Lucene. Proporciona un motor de búsqueda de texto completo distribuido y multiusuario con una interfaz web HTTP y documentos JSON sin esquema. No puede utilizarse como capa de almacenamiento en caché para DynamoDB.
+
+Redshift - Amazon Redshift es un producto de almacén de datos basado en la nube a escala de petabytes totalmente administrado, diseñado para el almacenamiento y análisis de conjuntos de datos a gran escala. No puede utilizarse como capa de almacenamiento en caché para DynamoDB.
+
+Referencias:
+
+https://aws.amazon.com/dynamodb/dax/
+
+https://aws.amazon.com/elasticache/faqs/

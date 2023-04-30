@@ -1,0 +1,30 @@
+El departamento de nóminas de una empresa inicia varias cargas de trabajo de cálculo intensivo en instancias EC2 a una hora determinada del último día de cada mes. El departamento de nóminas ha observado una tendencia de grave retraso en el rendimiento durante esta hora. El equipo de ingeniería ha encontrado una solución utilizando el grupo de autoescalado para estas instancias EC2 y asegurándose de que 10 instancias EC2 estén disponibles durante esta hora de máximo uso. Para las operaciones normales, sólo bastan 2 instancias EC2 para atender la carga de trabajo.
+
+Como arquitecto de soluciones, ¿cuál de los siguientes pasos recomendarías para implantar la solución?
+
+
+
+Explicación
+Opción correcta:
+
+Configura tu grupo de autoescalado creando una acción programada que se inicie a la hora designada del último día del mes. Establece la capacidad deseada de instancias en 10. Esto hace que el escalado se produzca antes de que se inicie el pico de tráfico a la hora designada.
+
+El escalado programado te permite establecer tu propio calendario de escalado. Por ejemplo, supongamos que cada semana el tráfico de tu aplicación web empieza a aumentar el miércoles, se mantiene alto el jueves y empieza a disminuir el viernes. Puedes planificar tus acciones de escalado basándote en los patrones de tráfico predecibles de tu aplicación web. Las acciones de escalado se realizan automáticamente en función de la hora y la fecha.
+
+Una acción programada establece los tamaños mínimo, máximo y deseado a lo especificado por la acción programada en el momento especificado por la acción programada. Para el caso de uso dado, la solución correcta es fijar la capacidad deseada en 10. Cuando queremos especificar un rango de instancias, entonces debemos utilizar los valores mínimo y máximo.
+
+Opciones incorrectas:
+
+Configura tu grupo de autoescalado creando una acción programada que se inicie a la hora designada del último día del mes. Establece el recuento mínimo y máximo de instancias en 10. Esto hace que el escalado se produzca antes de que se inicie el pico de tráfico a la hora designada - Como se ha mencionado anteriormente en la explicación, sólo cuando queramos especificar un rango de instancias, deberemos utilizar los valores mínimo y máximo. Como el caso de uso dado requiere que haya exactamente 10 instancias disponibles durante la hora punta, debemos establecer la capacidad deseada en 10. Por tanto, esta opción es incorrecta.
+
+Configura tu grupo de autoescalado creando una política de seguimiento de objetivos y estableciendo el recuento de instancias en 10 a la hora designada. Esto hace que la ampliación se produzca antes de que se inicie el pico de tráfico a la hora designada.
+
+Configura tu grupo de autoescalado creando una política de seguimiento sencilla y estableciendo el recuento de instancias en 10 a la hora designada. Esto hace que el escalado se produzca antes de que se inicie el pico de tráfico a la hora designada.
+
+La política de seguimiento de objetivos o la política de seguimiento simple no pueden utilizarse para efectuar una acción de escalado a una hora determinada. Estas dos opciones se han añadido como distractores.
+
+Referencia:
+
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html
+
+

@@ -1,0 +1,48 @@
+Una organización de análisis de vídeo ha sido adquirida por una importante empresa de medios de comunicación.
+ La organización de análisis tiene 10 aplicaciones independientes con una huella de datos local de unos 70 TB
+  para cada aplicación. El director de tecnología de la empresa de medios de comunicación ha fijado un plazo
+   de dos semanas para llevar a cabo la migración de datos del centro de datos local a la nube de AWS y 
+   establecer la conectividad.
+
+¿Cuál de las siguientes opciones es la MÁS rentable para completar la transferencia de datos y establecer
+ la conectividad? (Selecciona dos)
+
+
+ Explicación
+Opciones correctas:
+
+* Pide 10 dispositivos Snowball Edge Storage Optimized para completar la transferencia única de datos
+
+Snowball Edge Storage Optimized es la elección óptima si necesitas transferir de forma segura y rápida decenas de terabytes a petabytes de datos a AWS. Proporciona hasta 80 TB de almacenamiento HDD utilizable, 40 vCPU, 1 TB de almacenamiento SATA SSD y conectividad de red de hasta 40 Gb para abordar casos de uso de transferencia y preprocesamiento de datos a gran escala.
+
+Como cada dispositivo Snowball Edge Storage Optimized puede manejar 80 TB de datos, puedes pedir 10 dispositivos de este tipo para ocuparte de la transferencia de datos de todas las aplicaciones.
+
+Alerta de examen:
+
+Los dispositivos Snowball originales fueron retirados del servicio y los Snowball Edge Storage Optimized son ahora los dispositivos principales utilizados para la transferencia de datos. Puede que veas el dispositivo Snowball en el examen, pero recuerda que el dispositivo Snowball original tenía 80 TB de espacio de almacenamiento.
+
+* Configurar una VPN de sitio a sitio para establecer una conectividad continua entre el centro de datos local y la nube de AWS.
+
+AWS Site-to-Site VPN te permite conectar de forma segura tu red local o sucursal a tu Amazon Virtual Private Cloud (Amazon VPC). Puedes ampliar de forma segura la red de tu centro de datos o sucursal a la nube con una conexión VPN de sitio a sitio de AWS. Una Conexión VPN VPC utiliza IPSec para establecer una conectividad de red cifrada entre tu intranet y Amazon VPC a través de Internet. Las Conexiones VPN pueden configurarse en minutos y son una buena solución si tienes una necesidad inmediata, tus requisitos de ancho de banda son de bajos a modestos y puedes tolerar la variabilidad inherente a la conectividad basada en Internet.
+
+Por tanto, esta opción es la más adecuada para el caso de uso dado, ya que la conectividad puede establecerse fácilmente dentro del plazo establecido.
+
+Opciones incorrectas:
+
+* Pide 1 Snowmobile para completar la transferencia única de datos - Cada Snowmobile tiene una capacidad total de hasta 100 petabytes. Para migrar grandes conjuntos de datos de 10PB o más en una única ubicación, debes utilizar Snowmobile. Para conjuntos de datos inferiores a 10PB o distribuidos en varias ubicaciones, debes utilizar Snowball. Por tanto, Snowmobile no es la solución adecuada para este caso de uso.
+
+* Configurar AWS Direct Connect para establecer la conectividad entre el centro de datos local y la nube de AWS - AWS Direct Connect te permite establecer una conexión de red dedicada entre tu red y una de las ubicaciones de AWS Direct Connect. Utilizando VLAN 802.1q estándar del sector, esta conexión dedicada puede dividirse en varias interfaces virtuales. AWS Direct Connect no utiliza Internet, sino conexiones de red dedicadas y privadas entre tu intranet y Amazon VPC. Direct Connect implica una inversión monetaria significativa y tarda al menos un mes en configurarse, por lo que no es la opción adecuada para este caso de uso.
+
+* Pide 70 dispositivos Snowball Edge Storage Optimized para completar la transferencia de datos única - Como la transferencia de datos puede completarse con sólo 10 dispositivos Snowball Edge Storage Optimized, no es necesario pedir 70 dispositivos.
+
+Referencias:
+
+https://aws.amazon.com/snowball/faqs/
+
+https://aws.amazon.com/vpn/
+
+https://aws.amazon.com/snowmobile/faqs/
+
+https://aws.amazon.com/directconnect/
+
+

@@ -1,0 +1,75 @@
+Un equipo de desarrollo necesita permisos para listar un bucket de S3 y eliminar objetos de ese bucket. Un administrador de sistemas ha creado la siguiente política IAM para proporcionar acceso al bucket y ha aplicado dicha política al grupo. El grupo no puede eliminar objetos del bucket. La empresa sigue el principio del mínimo privilegio.
+
+    "Version": "2021-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "s3:ListBucket",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::example-bucket"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+¿Qué declaración debería añadir un arquitecto de soluciones a la política para resolver este problema?
+
+
+
+Opción correcta:
+
+{
+    "Action": [
+        "s3:DeleteObject"
+    ],
+    "Resource": [
+        "arn:aws:s3:::example-bucket/*"
+    ],
+    "Effect": "Allow"
+}
+Los principales elementos de una declaración política son
+
+Effect: Especifica si la declaración Permitirá o Denegará una acción (Permitir es el efecto definido aquí).
+
+Action: Describe una acción o acciones concretas cuya ejecución se permitirá o denegará en función del Efecto introducido. Las acciones de la API son exclusivas de cada servicio (BorrarObjeto es la acción definida aquí).
+
+Resource: Especifica los recursos -por ejemplo, un bucket u objetos de S3- a los que se aplica la política en formato de nombre de recurso de Amazon (ARN) ("ejemplo-bucket/*" es el recurso definido aquí).
+
+Esta política proporciona al grupo los permisos de eliminación necesarios sobre los recursos del bucket S3.
+
+Opciones incorrectas:
+
+{
+    "Action": [
+        "s3:*Object"
+    ],
+    "Resource": [
+        "arn:aws:s3:::example-bucket/*"
+    ],
+    "Effect": "Allow"
+}
+Esta política es incorrecta ya que el valor de la acción no es válido
+{
+    "Action": [
+        "s3:*"
+    ],
+    "Resource": [
+        "arn:aws:s3:::example-bucket/*"
+    ],
+    "Effect": "Allow"
+}
+Esta política es incorrecta, ya que permite todas las acciones sobre el recurso, lo que viola el principio de mínimo privilegio, tal y como requiere el caso de uso dado.
+{
+    "Action": [
+        "s3:DeleteObject"
+    ],
+    "Resource": [
+        "arn:aws:s3:::example-bucket*"
+    ],
+    "Effect": "Allow"
+}
+Esto es incorrecto, ya que el nombre del recurso es incorrecto. Debería tener un /* después del nombre del bucket.
+Referencia:
+
+https://aws.amazon.com/blogs/security/techniques-for-writing-least-privilege-iam-policies/

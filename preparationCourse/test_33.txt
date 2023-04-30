@@ -1,0 +1,36 @@
+Una empresa de juegos utiliza Amazon Aurora como servicio de base de datos principal. La empresa ha desplegado 5 réplicas de lectura multi-AZ para aumentar el rendimiento de lectura y para utilizarlas como objetivo de conmutación por error. A las réplicas se les han asignado los siguientes niveles de prioridad de conmutación por error y los tamaños de instancia correspondientes se indican entre paréntesis: nivel-1 (16 TB), nivel-1 (32 TB), nivel-10 (16 TB), nivel-15 (16 TB), nivel-15 (32 TB).
+
+En caso de conmutación por error, ¿Amazon Aurora promoverá cuál de las siguientes réplicas de lectura?
+
+
+
+
+Explicación
+Opción correcta:
+
+Nivel-1 (32 TB)
+
+Amazon Aurora cuenta con un sistema de almacenamiento distribuido, tolerante a fallos y autorreparable que se autoescala hasta 128 TB por instancia de base de datos. Ofrece un alto rendimiento y disponibilidad con hasta 15 réplicas de lectura de baja latencia, recuperación puntual, copias de seguridad continuas en Amazon S3 y replicación en tres zonas de disponibilidad (AZ).
+
+Para Amazon Aurora, cada réplica de lectura está asociada a un nivel de prioridad (0-15). En caso de conmutación por error, Amazon Aurora promocionará la réplica de lectura que tenga la prioridad más alta (el nivel numerado más bajo). Si dos o más réplicas de Aurora tienen la misma prioridad, Amazon RDS promocionará la réplica de mayor tamaño. Si dos o más réplicas de Aurora comparten la misma prioridad y tamaño, entonces Amazon Aurora promociona una réplica arbitraria en el mismo nivel de promoción.
+
+Por lo tanto, para este planteamiento del problema, se promocionará la réplica de nivel 1 (32 TB).
+
+Opciones incorrectas:
+
+Nivel-15 (32 TB)
+
+Nivel-1 (16 TB)
+
+Nivel-10 (16 TB)
+
+Dadas las reglas de conmutación por error comentadas anteriormente en la explicación, estas tres opciones son incorrectas.
+
+Referencias:
+
+https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html
+
+https://docs.amazonaws.cn/en_us/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance
+
+
+

@@ -1,0 +1,63 @@
+El equipo de desarrollo de una startup de comercio electrónico ha configurado varios microservicios que se 
+ejecutan en instancias EC2 bajo un Application Load Balancer. El equipo quiere dirigir el tráfico a múltiples
+ servicios back-end basándose en la ruta URL de la cabecera HTTP. Así, quiere que las solicitudes de
+  https://www.example.com/orders vayan a un microservicio específico y las solicitudes
+   de https://www.example.com/products vayan a otro microservicio.
+
+¿Cuál de las siguientes características de los Application Load Balancers puede utilizarse para este caso de
+ uso?
+
+
+ Opción correcta:
+
+Enrutamiento basado en rutas
+
+    Elastic Load Balancer (ELB) distribuye automáticamente el tráfico entrante de la aplicación entre varios destinos, como instancias de Amazon EC2, contenedores, direcciones IP y funciones Lambda.
+
+    Si tu aplicación se compone de varios servicios individuales, un Application Load Balancer puede dirigir una petición a un servicio en función del contenido de la petición. Éstos son los distintos tipos -
+
+    Enrutamiento basado en host:
+
+    Puedes enrutar una petición de cliente basándote en el campo Host de la cabecera HTTP, lo que te permite enrutar a varios dominios desde el mismo equilibrador de carga.
+
+    Enrutamiento basado en rutas:
+
+    Puedes enrutar una petición de cliente basándote en la ruta URL de la cabecera HTTP.
+
+    Enrutamiento basado en cabeceras HTTP:
+
+    Puedes enrutar una petición de cliente basándote en el valor de cualquier cabecera HTTP estándar o personalizada.
+
+    Enrutamiento basado en el método HTTP:
+
+    Puedes enrutar una petición de cliente basándote en cualquier método HTTP estándar o personalizado.
+
+    Enrutamiento basado en parámetros de cadena de consulta:
+
+    Puedes enrutar una petición de cliente basándote en la cadena de consulta o en los parámetros de consulta.
+
+    Dirección IP de origen Enrutamiento basado en CIDR:
+
+    Puedes enrutar una petición de cliente basándote en la dirección IP CIDR de origen desde donde se origina la petición.
+
+    Visión general del enrutamiento basado en rutas:
+
+    Puedes utilizar las condiciones de ruta para definir reglas que enruten las peticiones basándose en la URL de la petición (también conocido como enrutamiento basado en la ruta).
+
+El patrón de ruta sólo se aplica a la ruta de la URL, no a sus parámetros de consulta.  vía - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#path-conditions
+
+IMG---------------- 05
+
+Opciones incorrectas:
+
+Enrutamiento basado en parámetros de cadena de consulta
+
+Enrutamiento basado en el encabezado HTTP
+
+Enrutamiento basado en host
+
+    Como se ha mencionado anteriormente en la explicación, ninguno de estos tres tipos de enrutamiento admite solicitudes basadas en la ruta URL de la cabecera HTTP. Por lo tanto, estos tres son incorrectos.
+
+Referencia:
+
+https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html

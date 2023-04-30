@@ -1,0 +1,27 @@
+Pregunta 37: Omitido
+Un nuevo ingeniero DevOps se ha incorporado recientemente a una gran empresa de servicios financieros. Como parte de su incorporación, el departamento de TI (Tecnología e Información) está llevando a cabo una revisión de la lista de comprobación de tareas relacionadas con AWS Identity and Access Management.
+
+Como arquitecto de soluciones, ¿qué mejores prácticas recomendarías (Selecciona dos)?
+
+
+Opciones correctas:
+
+Habilitar MFA para usuarios con privilegios - Según las mejores prácticas de AWS, es mejor habilitar la autenticación multifactor (MFA) para usuarios con privilegios mediante un dispositivo móvil habilitado para MFA o un token MFA de hardware.
+
+Configura AWS CloudTrail para registrar toda la actividad de la cuenta - AWS recomienda activar CloudTrail para registrar todas las acciones de IAM con fines de monitorización y auditoría.
+
+Opciones incorrectas:
+
+Crear un número mínimo de cuentas y compartir estas credenciales de cuenta entre los empleados - AWS recomienda que las credenciales de cuenta de usuario no se compartan entre usuarios. Por tanto, esta opción es incorrecta.
+
+Conceder el máximo de privilegios para evitar asignar privilegios de nuevo - AWS recomienda conceder el mínimo de privilegios necesarios para completar un determinado trabajo y evitar conceder privilegios excesivos que puedan ser mal utilizados. Por tanto, esta opción es incorrecta.
+
+Utilizar credenciales de usuario para conceder permisos específicos de acceso a las instancias de Amazon EC2 - Es muy recomendable utilizar roles para conceder permisos de acceso a las instancias EC2 que trabajan en diferentes servicios de AWS. Por tanto, esta opción es incorrecta.
+
+Referencias:
+
+https://aws.amazon.com/iam/
+
+https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html
+
+https://aws.amazon.com/cloudtrail/faqs/

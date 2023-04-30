@@ -1,0 +1,41 @@
+Un importante fabricante de coches quiere crear un nuevo servicio de coche como sensor aprovechando componentes totalmente sin servidor que AWS aprovisiona y administra automáticamente. El equipo de desarrollo del fabricante de coches no quiere una opción que requiera que la capacidad se aprovisione manualmente, ya que no quiere responder manualmente a los volúmenes cambiantes de datos de los sensores.
+
+Dadas estas limitaciones, ¿cuál de las siguientes soluciones es la MEJOR para desarrollar este servicio de coche como sensor?
+
+
+
+Explicación
+Opción correcta:
+
+Recoge los datos de los sensores en una cola estándar de Amazon SQS, que una función Lambda sondea por lotes y los datos se escriben en una tabla DynamoDB autoescalada para su procesamiento posterior.
+
+AWS Lambda te permite ejecutar código sin aprovisionar ni administrar servidores. Sólo pagas por el tiempo de computación que consumes. Amazon Simple Queue Service (SQS) es un servicio de colas de mensajes totalmente administrado que te permite desacoplar y escalar microservicios, sistemas distribuidos y aplicaciones sin servidor. SQS ofrece dos tipos de colas de mensajes. Las colas estándar ofrecen el máximo rendimiento, ordenación de mejor esfuerzo y entrega al menos una vez. Las colas FIFO de SQS están diseñadas para garantizar que los mensajes se procesan exactamente una vez, en el orden exacto en que se envían.
+
+AWS administra todas las operaciones en curso y la infraestructura subyacente necesaria para proporcionar un servicio de colas de mensajes altamente disponible y escalable. Con SQS, no hay costes iniciales, ni necesidad de adquirir, instalar y configurar software de mensajería, ni de invertir tiempo en la creación y el mantenimiento de la infraestructura de soporte. Las colas de SQS se crean dinámicamente y se escalan automáticamente para que puedas crear y hacer crecer aplicaciones de forma rápida y eficiente.
+
+Como no es necesario aprovisionar manualmente la capacidad, ésta es la opción correcta.
+
+Opciones incorrectas:
+
+Ingesta los datos del sensor en Kinesis Data Firehose, que escribe directamente los datos en una tabla DynamoDB autoescalada para su procesamiento posterior
+
+Amazon Kinesis Data Firehose es un servicio totalmente administrado para entregar datos de streaming en tiempo real a destinos como Amazon Simple Storage Service (Amazon S3), Amazon Redshift, Amazon OpenSearch Service, Splunk y cualquier punto final HTTP personalizado o puntos finales HTTP propiedad de proveedores de servicios de terceros compatibles, incluidos Datadog, Dynatrace, LogicMonitor, MongoDB, New Relic y Sumo Logic.
+
+Firehose no puede escribir directamente en una tabla de DynamoDB, por lo que esta opción es incorrecta.
+
+Los datos del sensor se ingieren en una cola estándar de Amazon SQS, que es sondeada por una aplicación que se ejecuta en una instancia EC2 y los datos se escriben en una tabla DynamoDB autoescalada para su procesamiento posterior.
+
+Ingiere los datos del sensor en un flujo de datos Kinesis, que es sondeado por una aplicación que se ejecuta en una instancia EC2 y los datos se escriben en una tabla DynamoDB autoescalada para su procesamiento posterior.
+
+El uso de una aplicación en una instancia EC2 está descartado, ya que el fabricante de automóviles quiere utilizar componentes totalmente sin servidor. Así que ambas opciones son incorrectas.
+
+Referencias:
+
+https://aws.amazon.com/sqs/
+
+https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html
+
+https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html
+
+https://aws.amazon.com/kinesis/data-streams/faqs/
+

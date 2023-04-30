@@ -1,0 +1,37 @@
+Un bloguero tecnológico quiere escribir una reseña sobre los precios comparativos de varios tipos de almacenamiento disponibles en la nube de AWS. El bloguero ha creado un archivo de prueba de tamaño 1GB con algunos datos aleatorios. A continuación, copia este archivo de prueba en la clase de almacenamiento AWS S3 Standard, aprovisiona un volumen EBS (General Purpose SSD (gp2)) con 100GB de almacenamiento aprovisionado y copia el archivo de prueba en el volumen EBS, y por último copia el archivo de prueba en un sistema de archivos EFS Standard Storage. A final de mes, analiza la factura de los costes incurridos en los respectivos tipos de almacenamiento para el archivo de prueba.
+
+¿Cuál es el orden correcto de los gastos de almacenamiento ocasionados por el archivo de prueba en estos tres tipos de almacenamiento?
+
+
+
+
+Explicación
+Opción correcta:
+
+Coste del almacenamiento de archivos de prueba en S3 Estándar < Coste del almacenamiento de archivos de prueba en EFS < Coste del almacenamiento de archivos de prueba en EBS
+
+Con Amazon EFS, pagas sólo por los recursos que utilizas. El precio del almacenamiento estándar de EFS es de 0,30 $ por GB al mes. Por lo tanto, el coste de almacenar el archivo de prueba en EFS es de 0,30$ al mes.
+
+Para los volúmenes SSD de propósito general (gp2) de EBS, los cargos son de 0,10$ por GB-mes de almacenamiento provisionado. Por tanto, para un almacenamiento provisionado de 100 GB para este caso de uso, el coste mensual en EBS es de 0,10$*100 = 10$. Este coste es independiente de cuánto almacenamiento consuma realmente el archivo de prueba.
+
+Para el almacenamiento S3 Estándar, el precio es de 0,023 $ por GB al mes. Por lo tanto, el coste mensual de almacenamiento en S3 para el archivo de prueba es de 0,023 $.
+
+Por tanto, ésta es la opción correcta.
+
+Opciones incorrectas:
+
+Coste del almacenamiento de archivos de prueba en S3 Estándar < Coste del almacenamiento de archivos de prueba en EBS < Coste del almacenamiento de archivos de prueba en EFS
+
+Coste del almacenamiento de archivos de prueba en EFS < Coste del almacenamiento de archivos de prueba en S3 Estándar < Coste del almacenamiento de archivos de prueba en EBS
+
+Coste del almacenamiento de archivos de prueba en EBS < Coste del almacenamiento de archivos de prueba en S3 Estándar < Coste del almacenamiento de archivos de prueba en EFS
+
+Siguiendo los cálculos mostrados anteriormente en la explicación, estas tres opciones son incorrectas.
+
+Referencias:
+
+https://aws.amazon.com/ebs/pricing/
+
+https://aws.amazon.com/s3/pricing/(https://aws.amazon.com/s3/pricing/)
+
+https://aws.amazon.com/efs/pricing/

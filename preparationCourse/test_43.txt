@@ -1,0 +1,34 @@
+El equipo de aprovisionamiento de la sede central en EE.UU. de una empresa global de comercio electrónico está preparando una hoja de cálculo del nuevo catálogo de productos. La hoja de cálculo se guarda en un sistema de archivos EFS creado en la región us-east-1. Los homólogos del equipo de aprovisionamiento de otras regiones de AWS, como Asia-Pacífico y Europa, también quieren colaborar en esta hoja de cálculo.
+
+Como arquitecto de soluciones, ¿cuál es tu recomendación para hacer posible esta colaboración con la MENOR cantidad de sobrecarga operativa?
+
+
+
+
+
+
+
+
+Opción correcta:
+
+Se puede acceder a la hoja de cálculo del sistema de archivos EFS en otras regiones de AWS utilizando una conexión de peering VPC interregional
+
+Amazon Elastic File System (Amazon EFS) proporciona un sistema de archivos NFS elástico, sencillo, escalable y totalmente administrado para su uso con los servicios en la nube de AWS y los recursos locales.
+
+Amazon EFS es un servicio regional que almacena datos dentro y a través de múltiples zonas de disponibilidad (AZs) para una alta disponibilidad y durabilidad. Las instancias de Amazon EC2 pueden acceder a su sistema de archivos a través de AZs, regiones y VPCs, mientras que los servidores locales pueden acceder utilizando AWS Direct Connect o AWS VPN.
+
+Puedes conectarte a los sistemas de archivos de Amazon EFS desde instancias EC2 de otras regiones de AWS mediante una conexión de peering VPC interregional, y desde servidores locales mediante una conexión VPN de AWS. Por tanto, esta es la opción correcta.
+
+Opciones incorrectas:
+
+La hoja de cálculo tendrá que copiarse en Amazon S3, al que luego se podrá acceder desde cualquier región de AWS
+
+Los datos de la hoja de cálculo tendrán que trasladarse a una base de datos RDS MySQL a la que luego se podrá acceder desde cualquier región de AWS
+
+Copiar la hoja de cálculo en una base de datos S3 o RDS no es la solución correcta, ya que implica mucha sobrecarga operativa. En el caso de RDS, habría que escribir código personalizado para replicar la funcionalidad de la hoja de cálculo que se ejecuta en la base de datos. S3 no permite la edición in situ de un objeto. Además, tampoco es compatible con POSIX. Así que habría que desarrollar una aplicación personalizada para "simular la edición in situ" y permitir la colabaración según el caso de uso. Así que ambas opciones quedan descartadas.
+
+La hoja de cálculo tendrá que copiarse en sistemas de archivos EFS de otras regiones de AWS, ya que EFS es un servicio regional y no permite el acceso desde otras regiones de AWS - Crear copias de la hoja de cálculo en sistemas de archivos EFS de otras regiones de AWS significaría que no sería posible la colaboración entre los equipos. En este caso, cada equipo trabajaría en "su propio archivo" en lugar de en un único archivo al que accederían y actualizarían todos los equipos. Por tanto, esta opción es incorrecta.
+
+Referencia:
+
+https://aws.amazon.com/efs/

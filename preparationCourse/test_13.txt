@@ -1,0 +1,35 @@
+Un consultor informático está ayudando al propietario de una mediana empresa a crear una cuenta de AWS.
+ ¿Cuáles son las recomendaciones de seguridad que debe seguir al crear el usuario raíz de la cuenta de AWS?
+  (Selecciona dos)
+
+
+  Explicación
+Opciones correctas:
+
+Crea una contraseña segura para el usuario root de la cuenta AWS
+
+Habilitar la autenticación multifactor (MFA) para la cuenta de usuario raíz de la cuenta de AWS
+
+Estas son algunas de las mejores prácticas a la hora de crear un usuario raíz de una cuenta AWS:
+
+1) Utiliza una contraseña segura para proteger el acceso a nivel de cuenta a la consola de administración de AWS. 2) Nunca compartas tu contraseña de usuario raíz de la cuenta de AWS ni las claves de acceso con nadie. 3) Si tienes una clave de acceso para el usuario raíz de tu cuenta de AWS, elimínala. Si debes conservarla, rota (cambia) la clave de acceso con regularidad. No debes cifrar las claves de acceso y guardarlas en Amazon S3. 4) Si aún no tienes una clave de acceso para el usuario raíz de tu cuenta de AWS, no la crees a menos que sea absolutamente necesario. 5) Activa la autenticación multifactor (MFA) de AWS en tu cuenta de usuario raíz de la cuenta de AWS.
+
+Buenas prácticas de seguridad de la cuenta raíz de AWS:
+IMG_13 ---------------------
+
+
+vía - https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html
+
+Opciones incorrectas:
+
+Encripta las claves de acceso y guárdalas en Amazon S3 - AWS recomienda que, si aún no tienes una clave de acceso para el usuario raíz de tu cuenta de AWS, no crees una a menos que sea absolutamente necesario. Incluso una clave de acceso cifrada para el usuario raíz supone un riesgo de seguridad importante. Por tanto, esta opción es incorrecta.
+
+Crear claves de acceso para el usuario raíz de la cuenta de AWS y compartir esas claves sólo con el propietario de la empresa - AWS recomienda que, si aún no tienes una clave de acceso para el usuario raíz de tu cuenta de AWS, no crees una a menos que sea absolutamente necesario. Por tanto, esta opción es incorrecta.
+
+Envía un correo electrónico al propietario de la empresa con los detalles del nombre de usuario y la contraseña de acceso para el usuario raíz de AWS. Esto ayudará al propietario de la empresa a solucionar cualquier problema de inicio de sesión en el futuro - AWS recomienda que nunca compartas la contraseña del usuario raíz de tu cuenta de AWS ni las claves de acceso con nadie. Enviar un correo electrónico con las credenciales del usuario raíz de la cuenta de AWS crea un riesgo de seguridad, ya que puede ser utilizado indebidamente por cualquiera que lea el correo electrónico. Por lo tanto, esta opción es incorrecta.
+
+Referencia:
+
+https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#create-iam-users
+
+

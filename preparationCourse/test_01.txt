@@ -1,0 +1,21 @@
+Pregunta 1: 
+
+Una cadena de noticias utiliza Amazon S3 para agregar las secuencias de vídeo en bruto de sus equipos de
+ reporteros en todo EE.UU.. La cadena de noticias se ha expandido recientemente a nuevas geografías en 
+ Europa y Asia. Los equipos técnicos de las sucursales en el extranjero han informado de enormes retrasos
+  en la carga de archivos de vídeo de gran tamaño en el bucket S3 de destino.
+
+¿Cuáles de las siguientes son las opciones MÁS rentables para mejorar la velocidad de carga de archivos 
+en S3? (Selecciona dos)
+
+
+    -Crea varias conexiones VPN de sitio a sitio entre la nube de AWS y las sucursales de Europa y Asia. 
+     Utiliza estas conexiones VPN para subir archivos a S3 más rápidamente
+
+    *-Utiliza subidas multiparte para subir archivos más rápido al bucket de S3 de destino
+
+    *-Utiliza Amazon S3 Transfer Acceleration para permitir cargas de archivos más rápidas en el bucket de S3 de destino
+
+    -Crea varias conexiones de AWS Connect Direct entre la nube de AWS y las sucursales de Europa y Asia. Utiliza las conexiones de AWS Connect Direct para subir archivos más rápidamente a S3
+
+    -Utiliza el acelerador global de aws para subir archivos más rapído al bucket de s3 de destino

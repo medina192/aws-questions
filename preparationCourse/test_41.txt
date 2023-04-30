@@ -1,0 +1,39 @@
+Una agencia de medios almacena sus activos recreables en buckets de Amazon S3. Un gran número de usuarios accede a los activos durante los primeros días, y la frecuencia de acceso disminuye drásticamente después de una semana. Aunque se acceda a los activos ocasionalmente después de la primera semana, deben seguir estando accesibles inmediatamente cuando se necesiten. El coste de mantener todos los activos en almacenamiento S3 está resultando muy caro y la agencia está intentando reducir los costes en la medida de lo posible.
+
+Como arquitecto de soluciones, ¿puedes sugerir una forma de reducir los costes de almacenamiento sin dejar de cumplir los requisitos de la empresa?
+
+
+Explicación
+Opción correcta:
+
+Configura una política de ciclo de vida para transferir los objetos a Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA) transcurridos 30 días - S3 One Zone-IA es para datos a los que se accede con menos frecuencia, pero que requieren un acceso rápido cuando se necesitan. A diferencia de otras Clases de Almacenamiento S3 que almacenan datos en un mínimo de tres zonas de disponibilidad (AZ), S3 One Zone-IA almacena datos en una sola AZ y cuesta un 20% menos que S3 Estándar-IA. S3 One Zone-IA es ideal para clientes que desean una opción de menor coste para datos a los que se accede con poca frecuencia y que se pueden volver a crear, pero que no necesitan la disponibilidad y resistencia de S3 Standard o S3 Standard-IA. La duración mínima de almacenamiento es de 30 días antes de que puedas hacer la transición de objetos de S3 Estándar a S3 One Zone-IA.
+
+S3 One Zone-IA ofrece la misma alta durabilidad, alto rendimiento y baja latencia de S3 Standard, con un bajo precio por GB de almacenamiento y por GB de recuperación. Las Clases de Almacenamiento de S3 pueden configurarse a nivel de objeto, y un solo bucket puede contener objetos almacenados en S3 Estándar, S3 Intelligent-Tiering, S3 Estándar-IA y S3 One Zone-IA. También puedes utilizar las políticas del Ciclo de vida de S3 para realizar automáticamente la transición de objetos entre clases de almacenamiento sin necesidad de realizar cambios en la aplicación.
+
+Restricciones para las transiciones de clase de almacenamiento del Ciclo Vital:
+IMG 41
+
+
+vía - https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html
+
+Transiciones del ciclo de vida de S3 admitidas:
+IMG 41_2
+
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html
+
+Opciones incorrectas:
+
+Configura una política de ciclo de vida para que los objetos pasen a Amazon S3 Standard-Frequent Access (S3 Standard-IA) transcurridos 7 días.
+
+Configura una política de ciclo de vida para que los objetos pasen a Amazon S3 One Zone-Frequent Access (S3 One Zone-IA) transcurridos 7 días.
+
+Como ya se ha mencionado, la duración mínima de almacenamiento es de 30 días antes de que puedas pasar objetos de S3 Estándar a S3 One Zone-IA o S3 Standard-IA, por lo que ambas opciones se añaden como distractores.
+
+Configura una política de ciclo de vida para que los objetos pasen a Amazon S3 Standard-Infrequent Access (S3 Standard-IA) transcurridos 30 días - S3 Estándar-IA es para datos a los que se accede con menos frecuencia, pero que requieren un acceso rápido cuando se necesitan. S3 Estándar-IA ofrece la alta durabilidad, el alto rendimiento y la baja latencia de S3 Estándar, con un bajo precio por GB de almacenamiento y por GB de recuperación. Esta combinación de bajo coste y alto rendimiento hace que S3 Estándar-IA sea ideal para almacenamiento a largo plazo, copias de seguridad y como almacén de datos para archivos de recuperación ante desastres. Sin embargo, cuesta más que S3 One Zone-IA debido al almacenamiento redundante entre zonas de disponibilidad (AZ). Como los datos son recreables, no necesitas incurrir en este coste adicional.
+
+Referencias:
+
+https://aws.amazon.com/s3/storage-classes/
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html

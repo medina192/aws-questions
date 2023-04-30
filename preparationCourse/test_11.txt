@@ -1,0 +1,37 @@
+Una empresa de juegos está intentando mejorar la disponibilidad y el rendimiento de su aplicación insignia 
+global, que utiliza el protocolo UDP y necesita admitir una conmutación por error regional rápida en caso de
+que se caiga una región de AWS. La empresa quiere seguir utilizando su propio servicio DNS personalizado.
+
+¿Cuál de los siguientes servicios de AWS representa la mejor solución para este caso de uso?
+
+Explicación
+Opción correcta:
+
+* Acelerador Global de AWS - El Acelerador Global de AWS utiliza la red global de Amazon, lo que te permite mejorar el rendimiento de tus aplicaciones reduciendo la latencia del primer byte (el tiempo de ida y vuelta que tarda un paquete en ir de un cliente a tu punto final y viceversa) y la fluctuación (la variación de la latencia), y aumentando el rendimiento (la cantidad de tiempo que se tarda en transferir datos) en comparación con la Internet pública.
+
+El Acelerador Global mejora el rendimiento de una amplia gama de aplicaciones a través de TCP o UDP mediante la transferencia de paquetes en el borde a aplicaciones que se ejecutan en una o más regiones de AWS. El Acelerador Global es adecuado para casos de uso no HTTP, como juegos (UDP), IoT (MQTT) o Voz sobre IP, así como para casos de uso HTTP que requieran específicamente direcciones IP estáticas o una conmutación por error regional rápida y determinista.
+
+Opciones incorrectas:
+
+* Amazon CloudFront - Amazon CloudFront es un servicio rápido de red de entrega de contenidos (CDN) que entrega de forma segura datos, vídeos, aplicaciones y API a clientes de todo el mundo con baja latencia y altas velocidades de transferencia, todo ello en un entorno fácil de usar para los desarrolladores.
+
+AWS Global Accelerator y Amazon CloudFront son servicios independientes que utilizan la red global de AWS y sus ubicaciones de borde en todo el mundo. CloudFront mejora el rendimiento tanto del contenido almacenable en caché (como imágenes y vídeos) como del contenido dinámico (como la aceleración de API y la entrega de sitios dinámicos), mientras que Global Accelerator mejora el rendimiento de una amplia gama de aplicaciones sobre TCP o UDP.
+
+* AWS Elastic Load Balancer (ELB) - Ambos servicios, ELB y Acelerador Global, resuelven el desafío de enrutar las solicitudes de los usuarios a puntos finales de aplicación sanos. AWS Global Accelerator se basa en ELB para proporcionar las características tradicionales de equilibrio de carga, como la compatibilidad con puntos finales internos y ajenos a AWS, el precalentamiento y el enrutamiento de Capa 7. Sin embargo, mientras que ELB proporciona equilibrio de carga dentro de una región, el Acelerador Global de AWS proporciona gestión del tráfico a través de múltiples regiones.
+
+Un balanceador de carga ELB regional es un objetivo ideal para AWS Global Accelerator. Al utilizar un balanceador de carga ELB regional, puedes distribuir con precisión el tráfico entrante de la aplicación entre backends, como instancias de Amazon EC2 o tareas de Amazon ECS, dentro de una región de AWS.
+
+Si tienes cargas de trabajo que atienden a una base de clientes global, AWS recomienda que utilices AWS Global Accelerator. Si tienes cargas de trabajo alojadas en una única región de AWS y utilizadas por clientes de la misma región y sus alrededores, puedes utilizar un Application Load Balancer o un Network Load Balancer para administrar tus recursos.
+
+* Amazon Route 53 - Amazon Route 53 es un servicio web de Sistema de Nombres de Dominio (DNS) en la nube altamente disponible y escalable. Está diseñado para ofrecer a desarrolladores y empresas una forma extremadamente fiable y rentable de dirigir a los usuarios finales a las aplicaciones de Internet, traduciendo nombres como www.example.com a las direcciones IP numéricas como 192.0.2.1 que los ordenadores utilizan para conectarse entre sí. Route 53 queda descartada, ya que la empresa quiere seguir utilizando su propio servicio DNS personalizado.
+
+Referencia:
+
+https://aws.amazon.com/global-accelerator/faqs/
+
+
+
+
+
+
+

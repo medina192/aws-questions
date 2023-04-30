@@ -1,0 +1,34 @@
+Un científico junior que trabaja en el Laboratorio de Investigación del Espacio Profundo de la NASA está intentando subir una imagen de alta resolución de una nebulosa a Amazon S3. El tamaño de la imagen es de aproximadamente 3 GB. El científico junior está utilizando S3 Transfer Acceleration (S3TA) para subir la imagen más rápidamente. Resulta que S3TA no dio como resultado una transferencia acelerada.
+
+Dado este escenario, ¿cuál de las siguientes opciones es correcta en relación con los gastos de esta transferencia de imágenes?
+
+
+
+Explicación
+Opción correcta:
+
+El científico junior no tiene que pagar gastos de transferencia por la subida de imágenes
+
+No hay cargos por transferencia de datos S3 cuando los datos se transfieren desde Internet. Además, con el S3TA sólo pagas por las transferencias que se aceleran. Por lo tanto, el científico junior no tiene que pagar ningún gasto de transferencia por la subida de imágenes porque el S3TA no dio lugar a una transferencia acelerada.
+
+Visión general de la Aceleración de Transferencias S3 (S3TA):
+IMG 54
+
+vía - https://aws.amazon.com/s3/transfer-acceleration/
+
+Opciones incorrectas:
+
+El científico junior sólo tiene que pagar los gastos de transferencia del S3TA por la subida de imágenes - Como el S3TA no dio lugar a una transferencia acelerada, no hay que pagar gastos de transferencia del S3TA.
+
+El científico junior sólo tiene que pagar los gastos de transferencia de S3 por la subida de imágenes - No hay gastos de transferencia de datos de S3 cuando los datos se transfieren desde Internet. Por tanto, esta opción es incorrecta.
+
+El científico junior tiene que pagar tanto los gastos de transferencia del S3 como los gastos de transferencia del S3TA por la subida de imágenes - No hay gastos de transferencia de datos del S3 cuando los datos se transfieren desde Internet. Como el S3TA no dio lugar a una transferencia acelerada, no hay que pagar gastos de transferencia S3TA.
+
+Referencias:
+
+https://aws.amazon.com/s3/transfer-acceleration/
+
+https://aws.amazon.com/s3/pricing/
+
+
+

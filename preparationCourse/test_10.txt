@@ -1,0 +1,38 @@
+Un importante banco está utilizando SQS para migrar varias aplicaciones bancarias básicas a la nube con el 
+fin de garantizar una alta disponibilidad y rentabilidad, simplificando al mismo tiempo la complejidad 
+administrativa y los gastos generales. El equipo de desarrollo del banco espera que se procese un pico 
+de unos 1000 mensajes por segundo a través de SQS. Es importante que los mensajes se procesen en orden.
+
+¿Cuál de las siguientes opciones puede utilizarse para implantar este sistema?
+
+Explicación
+Opción correcta:
+
+* Utiliza la cola FIFO de Amazon SQS en modo batch de 4 mensajes por operación para procesar los mensajes al ritmo máximo
+
+Amazon Simple Queue Service (SQS) es un servicio de colas de mensajes totalmente administrado que te permite desacoplar y escalar microservicios, sistemas distribuidos y aplicaciones sin servidor. SQS ofrece dos tipos de colas de mensajes: colas estándar y colas FIFO.
+
+En las colas FIFO, se mantiene estrictamente el orden de envío y recepción de los mensajes (es decir, primero en entrar, primero en salir). En cambio, las colas SQS estándar ofrecen un orden de mejor esfuerzo. Esto significa que, ocasionalmente, los mensajes pueden ser entregados en un orden distinto al que fueron enviados.
+
+Por defecto, las colas FIFO admiten hasta 300 mensajes por segundo (300 operaciones de envío, recepción o borrado por segundo). Cuando procesas 10 mensajes por operación (como máximo), las colas FIFO pueden soportar hasta 3.000 mensajes por segundo. Por lo tanto, necesitas procesar 4 mensajes por operación para que la cola FIFO pueda soportar hasta 1200 mensajes por segundo, lo que está dentro de la tasa máxima.
+
+Visión general de las colas FIFO:
+IMG --------------- 10
+
+
+vía - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html
+
+Opciones incorrectas:
+
+Utilizar la cola estándar de Amazon SQS para procesar los mensajes - Como los mensajes deben procesarse en orden, se descartan las colas estándar.
+
+Utilizar la cola FIFO de Amazon SQS para procesar los mensajes - Por defecto, las colas FIFO admiten hasta 300 mensajes por segundo y esto no es suficiente para satisfacer el rendimiento del procesamiento de mensajes según el caso de uso dado. Por tanto, esta opción es incorrecta.
+
+Utiliza la cola FIFO de Amazon SQS en modo por lotes de 2 mensajes por operación para procesar los mensajes a la velocidad máxima - Como se ha mencionado anteriormente en la explicación, necesitas utilizar colas FIFO en modo por lotes y procesar 4 mensajes por operación, para que la cola FIFO pueda soportar hasta 1200 mensajes por segundo. Con 2 mensajes por operación, sólo podrás soportar hasta 600 mensajes por segundo.
+
+Referencias:
+
+https://aws.amazon.com/sqs/
+
+https://aws.amazon.com/sqs/features/
+

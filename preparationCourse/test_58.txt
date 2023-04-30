@@ -1,0 +1,61 @@
+Una empresa ejecuta un flujo de trabajo de procesamiento de datos que tarda unos 60 minutos en completarse. El flujo de trabajo puede soportar interrupciones y puede iniciarse y detenerse varias veces.
+
+¿Cuál es la solución más rentable para construir una solución para el flujo de trabajo?
+
+
+Explicación
+Opción correcta:
+
+Utiliza Instancias Spot EC2 para ejecutar los procesos del flujo de trabajo
+
+Tipos de instancia EC2:
+IMG 58
+
+vía - https://aws.amazon.com/ec2/pricing/
+
+Las instancias de Amazon EC2 Spot te permiten solicitar capacidad informática sobrante de Amazon EC2 por hasta un 90% de descuento sobre el precio Bajo Demanda.
+
+Las Instancias Spot se recomiendan para:
+
+Aplicaciones que tienen horas de inicio y fin flexibles Aplicaciones que sólo son viables a precios de computación muy bajos Usuarios con necesidades informáticas urgentes de grandes cantidades de capacidad adicional
+
+Para el caso de uso dado, las Instancias Spot ofrecen la solución más rentable, ya que el flujo de trabajo puede soportar interrupciones y puede iniciarse y detenerse varias veces.
+
+Por ejemplo, considerando un proceso que se ejecuta durante una hora y necesita unos 1024 MB de memoria, el precio al contado de una instancia t2.micro (que tiene 1024 MB de RAM) es de 0,0035 $ por hora.
+
+Precios al contado:
+IMG 58_2
+
+vía - https://aws.amazon.com/ec2/spot/pricing/
+
+Contrasta esto con el precio de una función Lambda (que tiene 1024 MB de memoria asignada), que sale a 0,0000000167 $ por 1ms o 0,06 $ por hora (0,0000000167 $ * 1000 * 60 * 60 por hora).
+
+Precio de la función lambda:
+IMG 58_3
+
+https://aws.amazon.com/lambda/pricing/
+
+Así, una instancia puntual resulta ser unas 20 veces más rentable que una función Lambda para satisfacer los requisitos del caso de uso dado.
+
+Opciones incorrectas:
+
+Utilizar una función de AWS Lambda para ejecutar los procesos del flujo de trabajo - Como se menciona en la explicación anterior, una función de Lambda resulta ser 20 veces más cara que una instancia puntual para satisfacer los requisitos del flujo de trabajo del caso de uso dado, por lo que esta opción es incorrecta. También debes tener en cuenta que el tiempo máximo de ejecución de una función Lambda es de 15 minutos, por lo que el proceso del flujo de trabajo se vería interrumpido con toda seguridad. Por otra parte, es ciertamente posible que el proceso del flujo de trabajo pueda completarse en una sola ejecución en la instancia puntual (la frecuencia media de interrupción de la instancia puntual en todas las regiones y tipos de instancia es <10%).
+
+Utiliza instancias EC2 bajo demanda para ejecutar los procesos del flujo de trabajo
+
+Utilizar instancias reservadas EC2 para ejecutar los procesos del flujo de trabajo
+
+Debes tener en cuenta que tanto las instancias bajo demanda como las reservadas son más caras que las Instancias Spot. Además, las instancias reservadas tienen un plazo de 1 o 3 años, por lo que no son adecuadas para el flujo de trabajo dado. Por tanto, ambas opciones son incorrectas.
+
+Referencias:
+
+https://aws.amazon.com/ec2/pricing/
+
+https://aws.amazon.com/ec2/spot/pricing/
+
+https://aws.amazon.com/lambda/pricing/
+
+https://aws.amazon.com/ec2/spot/instance-advisor/
+
+
+

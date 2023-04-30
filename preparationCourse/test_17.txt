@@ -1,0 +1,26 @@
+Una empresa de análisis de datos mide lo que ven los consumidores y a qué publicidad están expuestos. Estos datos en tiempo real se ingieren en su centro de datos local y, posteriormente, la alimentación diaria de datos se comprime en un único archivo y se carga en Amazon S3 para realizar copias de seguridad. El tamaño típico del archivo comprimido es de unos 2 GB.
+
+¿Cuál de las siguientes es la forma más rápida de subir el archivo comprimido diario a S3?
+
+Explicación
+Opción correcta:
+
+* Cargar el archivo comprimido utilizando la carga multiparte con aceleración de transferencia S3
+
+La Aceleración de transferencias de Amazon S3 permite transferencias rápidas, sencillas y seguras de archivos a través de largas distancias entre tu cliente y un bucket de S3. La Aceleración de transferencias aprovecha las ubicaciones de borde distribuidas globalmente de Amazon CloudFront. Cuando los datos llegan a una ubicación de borde, se enrutan a Amazon S3 a través de una ruta de red optimizada.
+
+La subida multiparte te permite subir un único objeto como un conjunto de partes. Cada parte es una porción contigua de los datos del objeto. Puedes subir estas partes del objeto independientemente y en cualquier orden. Si falla la transmisión de alguna parte, puedes retransmitir esa parte sin que afecte a las demás. Una vez subidas todas las partes de tu objeto, Amazon S3 ensambla estas partes y crea el objeto. Si estás subiendo objetos grandes a través de una red estable de gran ancho de banda, utiliza la subida multiparte para maximizar el uso de tu ancho de banda disponible subiendo las partes del objeto en paralelo para obtener un rendimiento multihilo. Si subes objetos a través de una red inestable, utiliza la subida multiparte para aumentar la resistencia a los errores de red, evitando reiniciar la subida.
+
+Opciones incorrectas:
+
+Subir el archivo comprimido en una sola operación - En general, cuando el tamaño de tu objeto alcanza los 100 MB, deberías plantearte utilizar la subida multiparte en lugar de subir el objeto en una sola operación. La carga multiparte mejora el rendimiento: puedes cargar partes en paralelo para mejorar el rendimiento. Por tanto, esta opción no es correcta.
+
+Subir el archivo comprimido utilizando la subida multiparte - Aunque utilizar la subida multiparte ciertamente aceleraría el proceso, combinarlo con la aceleración de transferencia de S3 mejoraría aún más la velocidad de transferencia. Por tanto, utilizar sólo la subida multiparte no es la opción correcta.
+
+Transfiere por ftp el archivo comprimido a una instancia EC2 que se ejecute en la misma región que el bucket S3. A continuación, transfiere el archivo desde la instancia EC2 al bucket S3 - Se trata de un proceso indirecto para introducir el archivo en S3 y añadirlo como distractor. Aunque es técnicamente factible seguir este proceso, implicaría un montón de scripts y desde luego no sería la forma más rápida de introducir el archivo en S3.
+
+Referencias:
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html

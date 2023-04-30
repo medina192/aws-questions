@@ -1,0 +1,40 @@
+El equipo de ingeniería de un club de fútbol profesional español ha construido un sistema de notificaciones para su sitio web utilizando notificaciones SNS de Amazon que luego son gestionadas por una función Lambda para su entrega al usuario final. Durante la temporada baja, el sistema de notificaciones necesita gestionar unas 100 solicitudes por segundo. Durante la temporada alta de fútbol, la tasa alcanza unas 5000 solicitudes por segundo y se observa que un número significativo de las notificaciones no se entregan a los usuarios finales en el sitio web.
+
+Como arquitecto de soluciones, ¿cuál de las siguientes sugerirías como MEJOR solución posible a este problema?
+
+
+
+
+
+Explicación
+Opción correcta:
+
+Los envíos de mensajes de Amazon SNS a AWS Lambda han superado la cuota de concurrencia de la cuenta para Lambda, por lo que el equipo debe ponerse en contacto con AWS support para aumentar el límite de la cuenta
+
+Amazon Simple Notification Service (SNS) es un servicio de mensajería pub/sub de alta disponibilidad, duradero, seguro y totalmente administrado que te permite desacoplar microservicios, sistemas distribuidos y aplicaciones sin servidor.
+
+Cómo funciona SNS:
+IMG 31
+
+vía - https://aws.amazon.com/sns/
+
+Con AWS Lambda, puedes ejecutar código sin aprovisionar ni administrar servidores. Sólo pagas por el tiempo de computación que consumes: no hay cargos cuando tu código no se está ejecutando.
+
+AWS Lambda admite actualmente 1000 ejecuciones concurrentes por cuenta de AWS y por región. Si tus envíos de mensajes de Amazon SNS a AWS Lambda contribuyen a superar estas cuotas de concurrencia, se estrangularán tus envíos de mensajes de Amazon SNS. Tienes que ponerte en contacto con AWS support para aumentar el límite de la cuenta. Por tanto, esta opción es correcta.
+
+Opciones incorrectas:
+
+Amazon SNS ha alcanzado un límite de escalabilidad, por lo que el equipo necesita ponerse en contacto con AWS support para aumentar el límite de la cuenta - Amazon SNS aprovecha la probada nube de AWS para escalar dinámicamente con tu aplicación. No necesitas ponerte en contacto con AWS support, ya que SNS es un servicio totalmente gestionado, que se encarga del trabajo pesado relacionado con la planificación de la capacidad, el aprovisionamiento, la monitorización y la aplicación de parches. Por tanto, esta opción es incorrecta.
+
+El equipo de ingeniería necesita aprovisionar más servidores que ejecuten el servicio SNS
+
+El equipo de ingeniería necesita aprovisionar más servidores que ejecuten el servicio Lambda
+
+Como tanto Lambda como SNS son servicios sin servidor y totalmente gestionados, el equipo de ingeniería no puede aprovisionar más servidores. Ambas opciones son incorrectas.
+
+Referencias:
+
+https://aws.amazon.com/sns/
+
+https://aws.amazon.com/sns/faqs/
+
